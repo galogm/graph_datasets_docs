@@ -156,12 +156,28 @@
 <span class="sd">                &quot;NMI&quot;: &quot;89.0&quot;,</span>
 <span class="sd">            }</span>
 <span class="sd">            thead=[]</span>
+<span class="sd">            # list of values</span>
 <span class="sd">            csv2file(</span>
 <span class="sd">                target_path=save_file,</span>
 <span class="sd">                thead=list(final_params.keys()),</span>
 <span class="sd">                tbody=list(final_params.values()),</span>
 <span class="sd">                refresh=False,</span>
 <span class="sd">                is_dict=False,</span>
+<span class="sd">            )</span>
+<span class="sd">            # list of dicts</span>
+<span class="sd">            csv2file(</span>
+<span class="sd">                target_path=save_file,</span>
+<span class="sd">                tbody=[</span>
+<span class="sd">                    {</span>
+<span class="sd">                        &quot;a&quot;: 1,</span>
+<span class="sd">                        &quot;b&quot;: 2</span>
+<span class="sd">                    },</span>
+<span class="sd">                    {</span>
+<span class="sd">                        &quot;a&quot;: 2,</span>
+<span class="sd">                        &quot;b&quot;: 1</span>
+<span class="sd">                    },</span>
+<span class="sd">                ],</span>
+<span class="sd">                is_dict=True,</span>
 <span class="sd">            )</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">target_path</span><span class="p">:</span> <span class="n">PurePath</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">target_path</span><span class="p">)</span>
