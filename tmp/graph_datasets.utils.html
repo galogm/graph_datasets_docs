@@ -153,10 +153,18 @@
 <dt class="sig sig-object py" id="graph_datasets.utils.model_management.set_seed">
 <span class="sig-prename descclassname"><span class="pre">graph_datasets.utils.model_management.</span></span><span class="sig-name descname"><span class="pre">set_seed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">4096</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/graph_datasets/utils/model_management.html#set_seed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#graph_datasets.utils.model_management.set_seed" title="Permalink to this definition"></a></dt>
 <dd><p>Set random seed.</p>
-<p>NOTE:!!! conv and neighborSampler of dgl is somehow nondeterministic !!!</p>
-<p>Set according to the pytorch doc: <a class="reference external" href="https://pytorch.org/docs/1.9.0/notes/randomness.html">https://pytorch.org/docs/1.9.0/notes/randomness.html</a>
-cudatoolkit doc: <a class="reference external" href="https://docs.nvidia.com/cuda/cublas/index.html#cublasApi_reproducibility">https://docs.nvidia.com/cuda/cublas/index.html#cublasApi_reproducibility</a>
-dgl issue: <a class="reference external" href="https://github.com/dmlc/dgl/issues/3302">https://github.com/dmlc/dgl/issues/3302</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>!!! <cite>conv</cite> and <cite>neighborSampler</cite> of dgl are somehow nondeterministic !!!</p>
+<dl class="simple">
+<dt>Set seeds according to:</dt><dd><ul class="simple">
+<li><p><a class="reference external" href="https://pytorch.org/docs/1.9.0/notes/randomness.html">pytorch doc</a></p></li>
+<li><p><a class="reference external" href="https://docs.nvidia.com/cuda/cublas/index.html#cublasApi_reproducibility">cudatoolkit doc</a></p></li>
+<li><p><a class="reference external" href="https://github.com/dmlc/dgl/issues/3302">dgl issue</a></p></li>
+</ul>
+</dd>
+</dl>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>seed</strong> (<em>int</em><em>, </em><em>optional</em>) – random seed. Defaults to 4096.</p>
@@ -231,12 +239,28 @@ dgl issue: <a class="reference external" href="https://github.com/dmlc/dgl/issue
     <span class="s2">&quot;NMI&quot;</span><span class="p">:</span> <span class="s2">&quot;89.0&quot;</span><span class="p">,</span>
 <span class="p">}</span>
 <span class="n">thead</span><span class="o">=</span><span class="p">[]</span>
+<span class="c1"># list of values</span>
 <span class="n">csv2file</span><span class="p">(</span>
     <span class="n">target_path</span><span class="o">=</span><span class="n">save_file</span><span class="p">,</span>
     <span class="n">thead</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">final_params</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span>
     <span class="n">tbody</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">final_params</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span>
     <span class="n">refresh</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="n">is_dict</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="c1"># list of dicts</span>
+<span class="n">csv2file</span><span class="p">(</span>
+    <span class="n">target_path</span><span class="o">=</span><span class="n">save_file</span><span class="p">,</span>
+    <span class="n">tbody</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="mi">2</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="mi">1</span>
+        <span class="p">},</span>
+    <span class="p">],</span>
+    <span class="n">is_dict</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -359,8 +383,8 @@ dgl issue: <a class="reference external" href="https://github.com/dmlc/dgl/issue
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>args</strong> (<em>Dict</em>) – value dict.</p></li>
 <li><p><strong>thead</strong> (<em>List</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – table head. Defaults to None.</p></li>
-<li><p><strong>cols_align</strong> (<em>List</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – horizontal alignment settings of the columns. Defaults to None.</p></li>
-<li><p><strong>cols_valign</strong> (<em>List</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – vertical alignment settings of the columns. Defaults to None.</p></li>
+<li><p><strong>cols_align</strong> (<em>List</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – horizontal alignment of the columns. Defaults to None.</p></li>
+<li><p><strong>cols_valign</strong> (<em>List</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – vertical alignment of the columns. Defaults to None.</p></li>
 <li><p><strong>cols_dtype</strong> (<em>List</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – value types of the columns. Defaults to None.</p></li>
 <li><p><strong>sort</strong> (<em>bool</em><em>, </em><em>optional</em>) – whether to sort the keys. Defaults to True.</p></li>
 </ul>

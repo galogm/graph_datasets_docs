@@ -181,11 +181,14 @@
 <div class="viewcode-block" id="set_seed"><a class="viewcode-back" href="../../../tmp/graph_datasets.utils.html#graph_datasets.utils.model_management.set_seed">[docs]</a><span class="k">def</span> <span class="nf">set_seed</span><span class="p">(</span><span class="n">seed</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4096</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Set random seed.</span>
 
-<span class="sd">    NOTE:!!! conv and neighborSampler of dgl is somehow nondeterministic !!!</span>
+<span class="sd">    NOTE:</span>
+<span class="sd">        !!! `conv` and `neighborSampler` of dgl are somehow nondeterministic !!!</span>
 
-<span class="sd">    Set according to the pytorch doc: https://pytorch.org/docs/1.9.0/notes/randomness.html</span>
-<span class="sd">    cudatoolkit doc: https://docs.nvidia.com/cuda/cublas/index.html#cublasApi_reproducibility</span>
-<span class="sd">    dgl issue: https://github.com/dmlc/dgl/issues/3302</span>
+<span class="sd">        Set seeds according to:</span>
+<span class="sd">            - `pytorch doc &lt;https://pytorch.org/docs/1.9.0/notes/randomness.html&gt;`_</span>
+<span class="sd">            - `cudatoolkit doc \</span>
+<span class="sd">                &lt;https://docs.nvidia.com/cuda/cublas/index.html#cublasApi_reproducibility&gt;`_</span>
+<span class="sd">            - `dgl issue &lt;https://github.com/dmlc/dgl/issues/3302&gt;`_</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        seed (int, optional): random seed. Defaults to 4096.</span>
