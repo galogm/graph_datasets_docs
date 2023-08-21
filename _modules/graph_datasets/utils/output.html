@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>graph_datasets.utils.output &mdash; Graph Datasets 0.4.0 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Graph Datasets
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Datasets</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../rst/table.html">statistics</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Loaders</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../rst/load_data.html">load_data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../rst/graph_datasets.datasets.html">DGL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../rst/graph_datasets.datasets.html#module-graph_datasets.datasets.pyg">PyG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../rst/graph_datasets.datasets.html#module-graph_datasets.datasets.ogb">OGB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../rst/graph_datasets.datasets.html#module-graph_datasets.datasets.linkx">LINKX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../rst/graph_datasets.datasets.html#module-graph_datasets.datasets.critical">CRITICAL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../rst/graph_datasets.datasets.html#module-graph_datasets.datasets.cola">CoLA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../rst/graph_datasets.datasets.html#module-graph_datasets.datasets.sdcn">SDCN</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Sources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../rst/data_info.html">data_info</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Utils</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../rst/graph_datasets.utils.html">utils</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Graph Datasets</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+          <li class="breadcrumb-item"><a href="../utils.html">graph_datasets.utils</a></li>
+      <li class="breadcrumb-item active">graph_datasets.utils.output</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for graph_datasets.utils.output</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Output Management.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">PurePath</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Tuple</span>
+
+
+<div class="viewcode-block" id="make_parent_dirs"><a class="viewcode-back" href="../../../tmp/graph_datasets.utils.html#graph_datasets.utils.output.make_parent_dirs">[docs]</a><span class="k">def</span> <span class="nf">make_parent_dirs</span><span class="p">(</span><span class="n">target_path</span><span class="p">:</span> <span class="n">PurePath</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;make all the parent dirs of the target path.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        target_path (PurePath): target path.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">target_path</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="n">target_path</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="refresh_file"><a class="viewcode-back" href="../../../tmp/graph_datasets.utils.html#graph_datasets.utils.output.refresh_file">[docs]</a><span class="k">def</span> <span class="nf">refresh_file</span><span class="p">(</span><span class="n">target_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;clear target path</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        target_path (str): file path</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">target_path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">target_path</span><span class="p">:</span> <span class="n">PurePath</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">target_path</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">target_path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+            <span class="n">target_path</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span>
+
+        <span class="n">make_parent_dirs</span><span class="p">(</span><span class="n">target_path</span><span class="p">)</span>
+        <span class="n">target_path</span><span class="o">.</span><span class="n">touch</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="csv2file"><a class="viewcode-back" href="../../../tmp/graph_datasets.utils.html#graph_datasets.utils.output.csv2file">[docs]</a><span class="k">def</span> <span class="nf">csv2file</span><span class="p">(</span>
+    <span class="n">target_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">thead</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">tbody</span><span class="p">:</span> <span class="n">Tuple</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">refresh</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">is_dict</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;save csv to target_path</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        target_path (str): target path</span>
+<span class="sd">        thead (Tuple[str], optional): csv table header, only written into the file when\</span>
+<span class="sd">            it is not None and file is empty. Defaults to None.</span>
+<span class="sd">        tbody (Tuple, optional): csv table content. Defaults to None.</span>
+<span class="sd">        refresh (bool, optional): whether to clean the file first. Defaults to False.</span>
+<span class="sd">        is_dict (bool, optional): whether the tbody is in the format of a dict. Defaults to False.</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            from graph_datasets import csv2file</span>
+<span class="sd">            save_file = &quot;./results/example.csv&quot;</span>
+<span class="sd">            final_params = {</span>
+<span class="sd">                &quot;dataset&quot;: &quot;cora&quot;,</span>
+<span class="sd">                &quot;acc&quot;: &quot;99.1&quot;,</span>
+<span class="sd">                &quot;NMI&quot;: &quot;89.0&quot;,</span>
+<span class="sd">            }</span>
+<span class="sd">            thead=[]</span>
+<span class="sd">            csv2file(</span>
+<span class="sd">                target_path=save_file,</span>
+<span class="sd">                thead=list(final_params.keys()),</span>
+<span class="sd">                tbody=list(final_params.values()),</span>
+<span class="sd">                refresh=False,</span>
+<span class="sd">                is_dict=False,</span>
+<span class="sd">            )</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">target_path</span><span class="p">:</span> <span class="n">PurePath</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">target_path</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">refresh</span><span class="p">:</span>
+        <span class="n">refresh_file</span><span class="p">(</span><span class="n">target_path</span><span class="p">)</span>
+
+    <span class="n">make_parent_dirs</span><span class="p">(</span><span class="n">target_path</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">target_path</span><span class="p">,</span> <span class="s2">&quot;a+&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>
+        <span class="n">csv_write</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">csvfile</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">stat</span><span class="p">(</span><span class="n">target_path</span><span class="p">)</span><span class="o">.</span><span class="n">st_size</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">thead</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">csv_write</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">thead</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">tbody</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">is_dict</span><span class="p">:</span>
+                <span class="n">dict_writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictWriter</span><span class="p">(</span>
+                    <span class="n">csvfile</span><span class="p">,</span>
+                    <span class="n">fieldnames</span><span class="o">=</span><span class="n">tbody</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span>
+                <span class="p">)</span>
+                <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">tbody</span><span class="p">:</span>
+                    <span class="n">dict_writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">csv_write</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">tbody</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Galo.gm.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

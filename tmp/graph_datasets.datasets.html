@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>graph_datasets.datasets package &mdash; Graph Datasets 0.4.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Graph Datasets
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Datasets</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../rst/table.html">statistics</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Loaders</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../rst/load_data.html">load_data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/graph_datasets.datasets.html">DGL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/graph_datasets.datasets.html#module-graph_datasets.datasets.pyg">PyG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/graph_datasets.datasets.html#module-graph_datasets.datasets.ogb">OGB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/graph_datasets.datasets.html#module-graph_datasets.datasets.linkx">LINKX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/graph_datasets.datasets.html#module-graph_datasets.datasets.critical">CRITICAL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/graph_datasets.datasets.html#module-graph_datasets.datasets.cola">CoLA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/graph_datasets.datasets.html#module-graph_datasets.datasets.sdcn">SDCN</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Sources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../rst/data_info.html">data_info</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Utils</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../rst/graph_datasets.utils.html">utils</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Graph Datasets</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">graph_datasets.datasets package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/tmp/graph_datasets.datasets.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="graph-datasets-datasets-package">
+<h1>graph_datasets.datasets package<a class="headerlink" href="#graph-datasets-datasets-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-graph_datasets.datasets.cola">
+<span id="graph-datasets-datasets-cola-module"></span><h2>graph_datasets.datasets.cola module<a class="headerlink" href="#module-graph_datasets.datasets.cola" title="Permalink to this heading"></a></h2>
+<p>Datasets from the paper <a class="reference external" href="https://github.com/GRAND-Lab/CoLA">CoLA</a>.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="graph_datasets.datasets.cola.load_cola_data">
+<span class="sig-prename descclassname"><span class="pre">graph_datasets.datasets.cola.</span></span><span class="sig-name descname"><span class="pre">load_cola_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./data'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbosity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">DGLGraph</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/graph_datasets/datasets/cola.html#load_cola_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#graph_datasets.datasets.cola.load_cola_data" title="Permalink to this definition"></a></dt>
+<dd><p>Load CoLA graphs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset_name</strong> (<em>str</em>) – Dataset name.</p></li>
+<li><p><strong>directory</strong> (<em>str</em><em>, </em><em>optional</em>) – Raw dir for loading or saving.             Defaults to DEFAULT_DATA_DIR=os.path.abspath(“./data”).</p></li>
+<li><p><strong>verbosity</strong> (<em>int</em><em>, </em><em>optional</em>) – Output debug information.             The greater, the more detailed. Defaults to 0.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>[graph, label, n_clusters]</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple[dgl.DGLGraph, torch.Tensor, int]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-graph_datasets.datasets.critical">
+<span id="graph-datasets-datasets-critical-module"></span><h2>graph_datasets.datasets.critical module<a class="headerlink" href="#module-graph_datasets.datasets.critical" title="Permalink to this heading"></a></h2>
+<p>Datasets from the paper     <a class="reference external" href="https://openreview.net/pdf?id=tJbbQfw-5wv">A Critical Look at the Evaluation of GNNs Under Heterophily:         Are We Really Making Progress?</a>.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="graph_datasets.datasets.critical.load_critical_dataset">
+<span class="sig-prename descclassname"><span class="pre">graph_datasets.datasets.critical.</span></span><span class="sig-name descname"><span class="pre">load_critical_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./data'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbosity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">DGLGraph</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/graph_datasets/datasets/critical.html#load_critical_dataset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#graph_datasets.datasets.critical.load_critical_dataset" title="Permalink to this definition"></a></dt>
+<dd><p>Load graphs from <em>A Critical Look at the Evaluation of GNNs Under Heterophily:          Are We Really Making Progress?</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset_name</strong> (<em>str</em>) – Dataset name.</p></li>
+<li><p><strong>directory</strong> (<em>str</em><em>, </em><em>optional</em>) – Raw dir for loading or saving.             Defaults to DEFAULT_DATA_DIR=os.path.abspath(“./data”).</p></li>
+<li><p><strong>verbosity</strong> (<em>int</em><em>, </em><em>optional</em>) – Output debug information.             The greater, the more detailed. Defaults to 0.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>[graph, label, n_clusters]</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple[dgl.DGLGraph, torch.Tensor, int]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-graph_datasets.datasets.dgl">
+<span id="graph-datasets-datasets-dgl-module"></span><h2>graph_datasets.datasets.dgl module<a class="headerlink" href="#module-graph_datasets.datasets.dgl" title="Permalink to this heading"></a></h2>
+<p>Datasets from <a class="reference external" href="https://github.com/dmlc/dgl">DGL</a>.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="graph_datasets.datasets.dgl.load_dgl_data">
+<span class="sig-prename descclassname"><span class="pre">graph_datasets.datasets.dgl.</span></span><span class="sig-name descname"><span class="pre">load_dgl_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./data'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbosity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">DGLGraph</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/graph_datasets/datasets/dgl.html#load_dgl_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#graph_datasets.datasets.dgl.load_dgl_data" title="Permalink to this definition"></a></dt>
+<dd><p>Load DGL graphs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset_name</strong> (<em>str</em>) – Dataset name.</p></li>
+<li><p><strong>directory</strong> (<em>str</em><em>, </em><em>optional</em>) – Raw dir for loading or saving.             Defaults to DEFAULT_DATA_DIR=os.path.abspath(“./data”).</p></li>
+<li><p><strong>verbosity</strong> (<em>int</em><em>, </em><em>optional</em>) – Output debug information.             The greater, the more detailed. Defaults to 0.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>NotImplementedError</strong> – Dataset unknown.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Chameleon, Squirrel, Actor, Cornell, Texas and Wisconsin are from Geom-GCN,            which may be slightly different from heterophilous settings.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>[graph, label, n_clusters]</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tuple[dgl.DGLGraph, torch.Tensor, int]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-graph_datasets.datasets.linkx">
+<span id="graph-datasets-datasets-linkx-module"></span><h2>graph_datasets.datasets.linkx module<a class="headerlink" href="#module-graph_datasets.datasets.linkx" title="Permalink to this heading"></a></h2>
+<p>Datasets from the paper <a class="reference external" href="https://github.com/CUAI/Non-Homophily-Large-Scale">LINKX</a>.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="graph_datasets.datasets.linkx.even_quantile_labels">
+<span class="sig-prename descclassname"><span class="pre">graph_datasets.datasets.linkx.</span></span><span class="sig-name descname"><span class="pre">even_quantile_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_classes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbosity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/graph_datasets/datasets/linkx.html#even_quantile_labels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#graph_datasets.datasets.linkx.even_quantile_labels" title="Permalink to this definition"></a></dt>
+<dd><p>partitions vals into n_classes by a quantile based split,
+where the first class is less than the 1/n_classes quantile,
+second class is less than the 2/n_classes quantile, and so on</p>
+<p>vals is np array
+returns an np array of int class labels</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="graph_datasets.datasets.linkx.load_linkx_data">
+<span class="sig-prename descclassname"><span class="pre">graph_datasets.datasets.linkx.</span></span><span class="sig-name descname"><span class="pre">load_linkx_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./data'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbosity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">DGLGraph</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/graph_datasets/datasets/linkx.html#load_linkx_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#graph_datasets.datasets.linkx.load_linkx_data" title="Permalink to this definition"></a></dt>
+<dd><p>Load LINKX graphs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset_name</strong> (<em>str</em>) – Dataset name.</p></li>
+<li><p><strong>directory</strong> (<em>str</em><em>, </em><em>optional</em>) – Raw dir for loading or saving.             Defaults to DEFAULT_DATA_DIR=os.path.abspath(“./data”).</p></li>
+<li><p><strong>verbosity</strong> (<em>int</em><em>, </em><em>optional</em>) – Output debug information.             The greater, the more detailed. Defaults to 0.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>[graph, label, n_clusters]</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple[dgl.DGLGraph, torch.Tensor, int]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="graph_datasets.datasets.linkx.load_linkx_github">
+<span class="sig-prename descclassname"><span class="pre">graph_datasets.datasets.linkx.</span></span><span class="sig-name descname"><span class="pre">load_linkx_github</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./data'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">DGLGraph</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/graph_datasets/datasets/linkx.html#load_linkx_github"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#graph_datasets.datasets.linkx.load_linkx_github" title="Permalink to this definition"></a></dt>
+<dd><p>Load LINKX graphs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset_name</strong> (<em>str</em>) – Dataset name.</p></li>
+<li><p><strong>directory</strong> (<em>str</em><em>, </em><em>optional</em>) – Raw dir for loading or saving.             Defaults to DEFAULT_DATA_DIR=os.path.abspath(“./data”).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>[graph, label, n_clusters]</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple[dgl.DGLGraph, torch.Tensor, int]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="graph_datasets.datasets.linkx.load_wiki_data">
+<span class="sig-prename descclassname"><span class="pre">graph_datasets.datasets.linkx.</span></span><span class="sig-name descname"><span class="pre">load_wiki_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./data'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">DGLGraph</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/graph_datasets/datasets/linkx.html#load_wiki_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#graph_datasets.datasets.linkx.load_wiki_data" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="graph_datasets.datasets.linkx.load_twitch_gamers_data">
+<span class="sig-prename descclassname"><span class="pre">graph_datasets.datasets.linkx.</span></span><span class="sig-name descname"><span class="pre">load_twitch_gamers_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mature'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./data'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">DGLGraph</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/graph_datasets/datasets/linkx.html#load_twitch_gamers_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#graph_datasets.datasets.linkx.load_twitch_gamers_data" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="graph_datasets.datasets.linkx.load_fb100_data">
+<span class="sig-prename descclassname"><span class="pre">graph_datasets.datasets.linkx.</span></span><span class="sig-name descname"><span class="pre">load_fb100_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./data'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">DGLGraph</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/graph_datasets/datasets/linkx.html#load_fb100_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#graph_datasets.datasets.linkx.load_fb100_data" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="graph_datasets.datasets.linkx.load_arxiv_year_data">
+<span class="sig-prename descclassname"><span class="pre">graph_datasets.datasets.linkx.</span></span><span class="sig-name descname"><span class="pre">load_arxiv_year_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./data'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbosity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">DGLGraph</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/graph_datasets/datasets/linkx.html#load_arxiv_year_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#graph_datasets.datasets.linkx.load_arxiv_year_data" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-graph_datasets.datasets.ogb">
+<span id="graph-datasets-datasets-ogb-module"></span><h2>graph_datasets.datasets.ogb module<a class="headerlink" href="#module-graph_datasets.datasets.ogb" title="Permalink to this heading"></a></h2>
+<p>Datasets from <a class="reference external" href="https://github.com/snap-stanford/ogb">OGB</a>.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="graph_datasets.datasets.ogb.load_ogb_data">
+<span class="sig-prename descclassname"><span class="pre">graph_datasets.datasets.ogb.</span></span><span class="sig-name descname"><span class="pre">load_ogb_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./data'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbosity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">DGLGraph</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/graph_datasets/datasets/ogb.html#load_ogb_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#graph_datasets.datasets.ogb.load_ogb_data" title="Permalink to this definition"></a></dt>
+<dd><p>Load OGB graphs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset_name</strong> (<em>str</em>) – Dataset name.</p></li>
+<li><p><strong>directory</strong> (<em>str</em><em>, </em><em>optional</em>) – Raw dir for loading or saving.             Defaults to DEFAULT_DATA_DIR=os.path.abspath(“./data”).</p></li>
+<li><p><strong>verbosity</strong> (<em>int</em><em>, </em><em>optional</em>) – Output debug information.             The greater, the more detailed. Defaults to 0.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>NotImplementedError</strong> – Dataset unknown.</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>[graph, label, n_clusters]</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tuple[dgl.DGLGraph, torch.Tensor, int]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-graph_datasets.datasets.pyg">
+<span id="graph-datasets-datasets-pyg-module"></span><h2>graph_datasets.datasets.pyg module<a class="headerlink" href="#module-graph_datasets.datasets.pyg" title="Permalink to this heading"></a></h2>
+<p>Datasets from <a class="reference external" href="https://github.com/pyg-team/pytorch_geometric">PyG</a>.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="graph_datasets.datasets.pyg.load_pyg_data">
+<span class="sig-prename descclassname"><span class="pre">graph_datasets.datasets.pyg.</span></span><span class="sig-name descname"><span class="pre">load_pyg_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./data'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbosity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">DGLGraph</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/graph_datasets/datasets/pyg.html#load_pyg_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#graph_datasets.datasets.pyg.load_pyg_data" title="Permalink to this definition"></a></dt>
+<dd><p>Load pyG graphs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset_name</strong> (<em>str</em>) – Dataset name.</p></li>
+<li><p><strong>directory</strong> (<em>str</em><em>, </em><em>optional</em>) – Raw dir for loading or saving.             Defaults to DEFAULT_DATA_DIR=os.path.abspath(“./data”).</p></li>
+<li><p><strong>verbosity</strong> (<em>int</em><em>, </em><em>optional</em>) – Output debug information.             The greater, the more detailed. Defaults to 0.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>NotImplementedError</strong> – Dataset unknown.</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>[graph, label, n_clusters]</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tuple[dgl.DGLGraph, torch.Tensor, int]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-graph_datasets.datasets.sdcn">
+<span id="graph-datasets-datasets-sdcn-module"></span><h2>graph_datasets.datasets.sdcn module<a class="headerlink" href="#module-graph_datasets.datasets.sdcn" title="Permalink to this heading"></a></h2>
+<p>Datasets from the paper <a class="reference external" href="https://github.com/bdy9527/SDCN">SDCN</a>.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="graph_datasets.datasets.sdcn.load_sdcn_data">
+<span class="sig-prename descclassname"><span class="pre">graph_datasets.datasets.sdcn.</span></span><span class="sig-name descname"><span class="pre">load_sdcn_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./data'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbosity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">DGLGraph</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/graph_datasets/datasets/sdcn.html#load_sdcn_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#graph_datasets.datasets.sdcn.load_sdcn_data" title="Permalink to this definition"></a></dt>
+<dd><p>Load SDCN graphs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset_name</strong> (<em>str</em>) – Dataset name.</p></li>
+<li><p><strong>directory</strong> (<em>str</em><em>, </em><em>optional</em>) – Raw dir for loading or saving.             Defaults to DEFAULT_DATA_DIR=os.path.abspath(“./data”).</p></li>
+<li><p><strong>verbosity</strong> (<em>int</em><em>, </em><em>optional</em>) – Output debug information.             The greater, the more detailed. Defaults to 0.</p></li>
+</ul>
+</dd>
+</dl>
+<p>NOTE: The last node of DBLP is an isolated node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>[graph, label, n_clusters]</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tuple[dgl.DGLGraph, torch.Tensor, int]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-graph_datasets.datasets">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-graph_datasets.datasets" title="Permalink to this heading"></a></h2>
+<p>Datasets from different sources</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Galo.gm.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

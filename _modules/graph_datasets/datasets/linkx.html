@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>graph_datasets.datasets.linkx &mdash; Graph Datasets 0.4.0 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Graph Datasets
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Datasets</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../rst/table.html">statistics</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Loaders</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../rst/load_data.html">load_data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../rst/graph_datasets.datasets.html">DGL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../rst/graph_datasets.datasets.html#module-graph_datasets.datasets.pyg">PyG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../rst/graph_datasets.datasets.html#module-graph_datasets.datasets.ogb">OGB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../rst/graph_datasets.datasets.html#module-graph_datasets.datasets.linkx">LINKX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../rst/graph_datasets.datasets.html#module-graph_datasets.datasets.critical">CRITICAL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../rst/graph_datasets.datasets.html#module-graph_datasets.datasets.cola">CoLA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../rst/graph_datasets.datasets.html#module-graph_datasets.datasets.sdcn">SDCN</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Sources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../rst/data_info.html">data_info</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Utils</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../rst/graph_datasets.utils.html">utils</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Graph Datasets</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">graph_datasets.datasets.linkx</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for graph_datasets.datasets.linkx</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Datasets from the paper `LINKX &lt;https://github.com/CUAI/Non-Homophily-Large-Scale&gt;`_.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="c1"># pylint:disable=invalid-name,duplicate-code</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Tuple</span>
+
+<span class="kn">import</span> <span class="nn">dgl</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">scipy.io</span> <span class="k">as</span> <span class="nn">sio</span>
+<span class="kn">import</span> <span class="nn">scipy.sparse</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">wget</span>
+<span class="kn">from</span> <span class="nn">ogb.nodeproppred</span> <span class="kn">import</span> <span class="n">DglNodePropPredDataset</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">label_binarize</span>
+
+<span class="kn">from</span> <span class="nn">..data_info</span> <span class="kn">import</span> <span class="n">DEFAULT_DATA_DIR</span>
+<span class="kn">from</span> <span class="nn">..data_info</span> <span class="kn">import</span> <span class="n">LINKX_DRIVE_ID</span>
+<span class="kn">from</span> <span class="nn">..data_info</span> <span class="kn">import</span> <span class="n">LINKX_URL</span>
+<span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">bar_progress</span>
+<span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">download_from_google_drive</span>
+<span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">download_tip</span>
+<span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">print_dataset_info</span>
+
+
+<div class="viewcode-block" id="even_quantile_labels"><a class="viewcode-back" href="../../../tmp/graph_datasets.datasets.html#graph_datasets.datasets.linkx.even_quantile_labels">[docs]</a><span class="k">def</span> <span class="nf">even_quantile_labels</span><span class="p">(</span><span class="n">vals</span><span class="p">,</span> <span class="n">n_classes</span><span class="p">,</span> <span class="n">verbosity</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;partitions vals into n_classes by a quantile based split,</span>
+<span class="sd">    where the first class is less than the 1/n_classes quantile,</span>
+<span class="sd">    second class is less than the 2/n_classes quantile, and so on</span>
+
+<span class="sd">    vals is np array</span>
+<span class="sd">    returns an np array of int class labels</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">vals</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+    <span class="n">interval_lst</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">lower</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_classes</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">upper</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanquantile</span><span class="p">(</span><span class="n">vals</span><span class="p">,</span> <span class="p">(</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_classes</span><span class="p">)</span>
+        <span class="n">interval_lst</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">lower</span><span class="p">,</span> <span class="n">upper</span><span class="p">))</span>
+        <span class="n">inds</span> <span class="o">=</span> <span class="p">(</span><span class="n">vals</span> <span class="o">&gt;=</span> <span class="n">lower</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">vals</span> <span class="o">&lt;</span> <span class="n">upper</span><span class="p">)</span>
+        <span class="n">label</span><span class="p">[</span><span class="n">inds</span><span class="p">]</span> <span class="o">=</span> <span class="n">k</span>
+        <span class="n">lower</span> <span class="o">=</span> <span class="n">upper</span>
+    <span class="n">label</span><span class="p">[</span><span class="n">vals</span> <span class="o">&gt;=</span> <span class="n">lower</span><span class="p">]</span> <span class="o">=</span> <span class="n">n_classes</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="n">interval_lst</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">lower</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">verbosity</span> <span class="ow">and</span> <span class="n">verbosity</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Generated Class Label Intervals:&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">class_idx</span><span class="p">,</span> <span class="n">interval</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">interval_lst</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Class </span><span class="si">{</span><span class="n">class_idx</span><span class="si">}</span><span class="s2">: [</span><span class="si">{</span><span class="n">interval</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">interval</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">)]&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">label</span></div>
+
+
+<div class="viewcode-block" id="load_linkx_data"><a class="viewcode-back" href="../../../tmp/graph_datasets.datasets.html#graph_datasets.datasets.linkx.load_linkx_data">[docs]</a><span class="k">def</span> <span class="nf">load_linkx_data</span><span class="p">(</span>
+    <span class="n">dataset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">directory</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">DEFAULT_DATA_DIR</span><span class="p">,</span>
+    <span class="n">verbosity</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">dgl</span><span class="o">.</span><span class="n">DGLGraph</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Load LINKX graphs.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        dataset_name (str):  Dataset name.</span>
+<span class="sd">        directory (str, optional): Raw dir for loading or saving. \</span>
+<span class="sd">            Defaults to DEFAULT_DATA_DIR=os.path.abspath(&quot;./data&quot;).</span>
+<span class="sd">        verbosity (int, optional): Output debug information. \</span>
+<span class="sd">            The greater, the more detailed. Defaults to 0.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Tuple[dgl.DGLGraph, torch.Tensor, int]: [graph, label, n_clusters]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">data_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">dataset_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="s1">&#39;_&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">.mat&quot;</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">dataset_name</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;pokec&quot;</span><span class="p">,</span> <span class="s2">&quot;snap-patents&quot;</span><span class="p">,</span> <span class="s2">&quot;yelp-chi&quot;</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">data_file</span><span class="p">):</span>
+            <span class="n">download_from_google_drive</span><span class="p">(</span>
+                <span class="n">gid</span><span class="o">=</span><span class="n">LINKX_DRIVE_ID</span><span class="p">[</span><span class="n">dataset_name</span><span class="p">],</span>
+                <span class="n">output</span><span class="o">=</span><span class="n">data_file</span><span class="p">,</span>
+                <span class="n">file_name</span><span class="o">=</span><span class="n">dataset_name</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="n">data_mat</span> <span class="o">=</span> <span class="n">sio</span><span class="o">.</span><span class="n">loadmat</span><span class="p">(</span><span class="n">data_file</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">dataset_name</span> <span class="o">==</span> <span class="s2">&quot;yelp-chi&quot;</span><span class="p">:</span>
+            <span class="n">g</span> <span class="o">=</span> <span class="n">dgl</span><span class="o">.</span><span class="n">from_scipy</span><span class="p">(</span><span class="n">data_mat</span><span class="p">[</span><span class="s2">&quot;homo&quot;</span><span class="p">])</span>
+            <span class="n">g</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s2">&quot;feat&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">data_mat</span><span class="p">[</span><span class="s2">&quot;features&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">todense</span><span class="p">(),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">g</span> <span class="o">=</span> <span class="n">dgl</span><span class="o">.</span><span class="n">graph</span><span class="p">((</span><span class="n">data_mat</span><span class="p">[</span><span class="s2">&quot;edge_index&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">data_mat</span><span class="p">[</span><span class="s2">&quot;edge_index&quot;</span><span class="p">][</span><span class="mi">1</span><span class="p">]))</span>
+            <span class="n">g</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s2">&quot;feat&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span>
+                <span class="n">data_mat</span><span class="p">[</span><span class="s2">&quot;node_feat&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">todense</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">sp</span><span class="o">.</span><span class="n">issparse</span><span class="p">(</span><span class="n">data_mat</span><span class="p">[</span><span class="s2">&quot;node_feat&quot;</span><span class="p">])</span> <span class="k">else</span> <span class="n">data_mat</span><span class="p">[</span><span class="s2">&quot;node_feat&quot;</span><span class="p">],</span>
+                <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">dataset_name</span> <span class="o">==</span> <span class="s2">&quot;snap-patents&quot;</span><span class="p">:</span>
+            <span class="n">years</span> <span class="o">=</span> <span class="n">data_mat</span><span class="p">[</span><span class="s2">&quot;years&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+            <span class="n">label</span> <span class="o">=</span> <span class="n">even_quantile_labels</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">verbosity</span><span class="o">=</span><span class="n">verbosity</span><span class="p">)</span>
+            <span class="n">g</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">long</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">g</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">data_mat</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">long</span><span class="p">)</span>
+
+        <span class="n">num_classes</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">dataset_name</span> <span class="ow">in</span> <span class="p">[</span>
+            <span class="s2">&quot;cornell&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;chameleon&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;film&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;squirrel&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;texas&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;wisconsin&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;genius&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;deezer-europe&quot;</span><span class="p">,</span>
+    <span class="p">]:</span>
+        <span class="n">g</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">num_classes</span> <span class="o">=</span> <span class="n">load_linkx_github</span><span class="p">(</span>
+            <span class="n">dataset_name</span><span class="o">=</span><span class="n">dataset_name</span><span class="p">,</span>
+            <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">elif</span> <span class="n">dataset_name</span> <span class="ow">in</span> <span class="p">[</span>
+            <span class="s2">&quot;Penn94&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Amherst41&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Cornell5&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Johns Hopkins55&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Reed98&quot;</span><span class="p">,</span>
+    <span class="p">]:</span>
+        <span class="n">g</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">num_classes</span> <span class="o">=</span> <span class="n">load_fb100_data</span><span class="p">(</span>
+            <span class="n">dataset_name</span><span class="o">=</span><span class="n">dataset_name</span><span class="p">,</span>
+            <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">elif</span> <span class="n">dataset_name</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;wiki&quot;</span><span class="p">]:</span>
+        <span class="n">g</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">num_classes</span> <span class="o">=</span> <span class="n">load_wiki_data</span><span class="p">(</span><span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">dataset_name</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;twitch-gamers&quot;</span><span class="p">]:</span>
+        <span class="n">g</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">num_classes</span> <span class="o">=</span> <span class="n">load_twitch_gamers_data</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="n">dataset_name</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;arxiv-year&quot;</span><span class="p">]:</span>
+        <span class="n">g</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">num_classes</span> <span class="o">=</span> <span class="n">load_arxiv_year_data</span><span class="p">(</span>
+            <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
+            <span class="n">verbosity</span><span class="o">=</span><span class="n">verbosity</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">verbosity</span> <span class="ow">and</span> <span class="n">verbosity</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">print_dataset_info</span><span class="p">(</span>
+            <span class="n">dataset_name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;LINKX Original </span><span class="si">{</span><span class="n">dataset_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="n">n_nodes</span><span class="o">=</span><span class="n">g</span><span class="o">.</span><span class="n">num_nodes</span><span class="p">(),</span>
+            <span class="n">n_edges</span><span class="o">=</span><span class="n">g</span><span class="o">.</span><span class="n">num_edges</span><span class="p">(),</span>
+            <span class="n">n_feats</span><span class="o">=</span><span class="n">g</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s2">&quot;feat&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+            <span class="n">n_clusters</span><span class="o">=</span><span class="n">num_classes</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">g</span><span class="p">,</span> <span class="n">g</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">],</span> <span class="n">num_classes</span></div>
+
+
+<div class="viewcode-block" id="load_linkx_github"><a class="viewcode-back" href="../../../tmp/graph_datasets.datasets.html#graph_datasets.datasets.linkx.load_linkx_github">[docs]</a><span class="k">def</span> <span class="nf">load_linkx_github</span><span class="p">(</span>
+    <span class="n">dataset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">directory</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">DEFAULT_DATA_DIR</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">dgl</span><span class="o">.</span><span class="n">DGLGraph</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Load LINKX graphs.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        dataset_name (str):  Dataset name.</span>
+<span class="sd">        directory (str, optional): Raw dir for loading or saving. \</span>
+<span class="sd">            Defaults to DEFAULT_DATA_DIR=os.path.abspath(&quot;./data&quot;).</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Tuple[dgl.DGLGraph, torch.Tensor, int]: [graph, label, n_clusters]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">data_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">dataset_name</span><span class="si">}</span><span class="s2">.mat&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">data_file</span><span class="p">):</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">LINKX_URL</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">dataset_name</span><span class="si">}</span><span class="s2">.mat?raw=true&quot;</span>
+        <span class="n">info</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;File&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">data_file</span><span class="p">),</span>
+            <span class="s2">&quot;Download URL&quot;</span><span class="p">:</span> <span class="n">url</span><span class="p">,</span>
+            <span class="s2">&quot;Save Path&quot;</span><span class="p">:</span> <span class="n">data_file</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="n">download_tip</span><span class="p">(</span><span class="n">info</span><span class="p">)</span>
+        <span class="n">wget</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">data_file</span><span class="p">,</span> <span class="n">bar</span><span class="o">=</span><span class="n">bar_progress</span><span class="p">)</span>
+
+    <span class="n">data_mat</span> <span class="o">=</span> <span class="n">sio</span><span class="o">.</span><span class="n">loadmat</span><span class="p">(</span><span class="n">data_file</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">dataset_name</span> <span class="o">==</span> <span class="s2">&quot;deezer-europe&quot;</span><span class="p">:</span>
+        <span class="n">graph</span> <span class="o">=</span> <span class="n">dgl</span><span class="o">.</span><span class="n">from_scipy</span><span class="p">(</span><span class="n">data_mat</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">])</span>
+        <span class="n">graph</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s2">&quot;feat&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">data_mat</span><span class="p">[</span><span class="s2">&quot;features&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">toarray</span><span class="p">())</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">graph</span> <span class="o">=</span> <span class="n">dgl</span><span class="o">.</span><span class="n">graph</span><span class="p">((</span><span class="n">data_mat</span><span class="p">[</span><span class="s2">&quot;edge_index&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">data_mat</span><span class="p">[</span><span class="s2">&quot;edge_index&quot;</span><span class="p">][</span><span class="mi">1</span><span class="p">]))</span>
+        <span class="n">graph</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s2">&quot;feat&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">data_mat</span><span class="p">[</span><span class="s2">&quot;node_feat&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+    <span class="n">label</span> <span class="o">=</span> <span class="n">data_mat</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+    <span class="n">graph</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">label</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+    <span class="n">num_classes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">label</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">graph</span><span class="p">,</span> <span class="n">graph</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">],</span> <span class="n">num_classes</span></div>
+
+
+<div class="viewcode-block" id="load_wiki_data"><a class="viewcode-back" href="../../../tmp/graph_datasets.datasets.html#graph_datasets.datasets.linkx.load_wiki_data">[docs]</a><span class="k">def</span> <span class="nf">load_wiki_data</span><span class="p">(</span><span class="n">directory</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">DEFAULT_DATA_DIR</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">dgl</span><span class="o">.</span><span class="n">DGLGraph</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+    <span class="n">data_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="s2">&quot;wiki&quot;</span><span class="p">)</span>
+    <span class="n">wiki_data</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_file</span><span class="p">,</span> <span class="s2">&quot;wiki.pt&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">wiki_data</span><span class="p">):</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">wiki_data</span><span class="p">)</span>
+        <span class="n">num_classes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">]))</span>
+        <span class="k">return</span> <span class="n">g</span><span class="p">,</span> <span class="n">g</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">],</span> <span class="n">num_classes</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">data_file</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">data_file</span><span class="p">)</span>
+
+    <span class="n">feat_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_file</span><span class="p">,</span> <span class="s2">&quot;wiki_features.pt&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">feat_path</span><span class="p">):</span>
+        <span class="n">download_from_google_drive</span><span class="p">(</span>
+            <span class="n">gid</span><span class="o">=</span><span class="n">LINKX_DRIVE_ID</span><span class="p">[</span><span class="s2">&quot;wiki_features&quot;</span><span class="p">],</span>
+            <span class="n">output</span><span class="o">=</span><span class="n">feat_path</span><span class="p">,</span>
+            <span class="n">quiet</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="n">edge_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_file</span><span class="p">,</span> <span class="s2">&quot;wiki_edges.pt&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">edge_path</span><span class="p">):</span>
+        <span class="n">download_from_google_drive</span><span class="p">(</span>
+            <span class="n">gid</span><span class="o">=</span><span class="n">LINKX_DRIVE_ID</span><span class="p">[</span><span class="s2">&quot;wiki_edges&quot;</span><span class="p">],</span>
+            <span class="n">output</span><span class="o">=</span><span class="n">edge_path</span><span class="p">,</span>
+            <span class="n">quiet</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="n">view_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_file</span><span class="p">,</span> <span class="s2">&quot;wiki_views.pt&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">view_path</span><span class="p">):</span>
+        <span class="n">download_from_google_drive</span><span class="p">(</span>
+            <span class="n">gid</span><span class="o">=</span><span class="n">LINKX_DRIVE_ID</span><span class="p">[</span><span class="s2">&quot;wiki_views&quot;</span><span class="p">],</span>
+            <span class="n">output</span><span class="o">=</span><span class="n">view_path</span><span class="p">,</span>
+            <span class="n">quiet</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="n">features</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">feat_path</span><span class="p">)</span>
+    <span class="n">edges</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">edge_path</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">view_path</span><span class="p">)</span>
+
+    <span class="c1"># NOTE: 1925342 nodes in edges while 1924551 nodes in features</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">dgl</span><span class="o">.</span><span class="n">graph</span><span class="p">((</span><span class="n">edges</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">edges</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">num_nodes</span><span class="o">=</span><span class="n">features</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s2">&quot;feat&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">features</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">label</span>
+    <span class="n">num_classes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">label</span><span class="p">))</span>
+
+    <span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">wiki_data</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">g</span><span class="p">,</span> <span class="n">g</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">],</span> <span class="n">num_classes</span></div>
+
+
+<div class="viewcode-block" id="load_twitch_gamers_data"><a class="viewcode-back" href="../../../tmp/graph_datasets.datasets.html#graph_datasets.datasets.linkx.load_twitch_gamers_data">[docs]</a><span class="k">def</span> <span class="nf">load_twitch_gamers_data</span><span class="p">(</span>
+    <span class="n">task</span><span class="o">=</span><span class="s2">&quot;mature&quot;</span><span class="p">,</span>
+    <span class="n">directory</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">DEFAULT_DATA_DIR</span><span class="p">,</span>
+    <span class="n">normalize</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">dgl</span><span class="o">.</span><span class="n">DGLGraph</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+    <span class="n">data_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="s2">&quot;twitch_gamers&quot;</span><span class="p">)</span>
+    <span class="n">twitch_gamers_data</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_file</span><span class="p">,</span> <span class="s2">&quot;twitch_gamers.pt&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">twitch_gamers_data</span><span class="p">):</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">twitch_gamers_data</span><span class="p">)</span>
+        <span class="n">num_classes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">]))</span>
+        <span class="k">return</span> <span class="n">g</span><span class="p">,</span> <span class="n">g</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">],</span> <span class="n">num_classes</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">data_file</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">data_file</span><span class="p">)</span>
+
+    <span class="n">feat_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_file</span><span class="p">,</span> <span class="s2">&quot;twitch-gamer_feat.csv&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">feat_path</span><span class="p">):</span>
+        <span class="n">download_from_google_drive</span><span class="p">(</span>
+            <span class="n">gid</span><span class="o">=</span><span class="n">LINKX_DRIVE_ID</span><span class="p">[</span><span class="s2">&quot;twitch-gamer_feat&quot;</span><span class="p">],</span>
+            <span class="n">output</span><span class="o">=</span><span class="n">feat_path</span><span class="p">,</span>
+            <span class="n">quiet</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="n">edge_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_file</span><span class="p">,</span> <span class="s2">&quot;twitch-gamer_edges.csv&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">edge_path</span><span class="p">):</span>
+        <span class="n">download_from_google_drive</span><span class="p">(</span>
+            <span class="n">gid</span><span class="o">=</span><span class="n">LINKX_DRIVE_ID</span><span class="p">[</span><span class="s2">&quot;twitch-gamer_edges&quot;</span><span class="p">],</span>
+            <span class="n">output</span><span class="o">=</span><span class="n">edge_path</span><span class="p">,</span>
+            <span class="n">quiet</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="n">edge_index</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">edge_path</span><span class="p">)</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">())</span><span class="o">.</span><span class="n">t</span><span class="p">()</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span><span class="p">)</span>
+
+    <span class="n">task</span> <span class="o">=</span> <span class="s2">&quot;dead_account&quot;</span>
+    <span class="n">nodes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">feat_path</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;numeric_id&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">nodes</span><span class="p">[</span><span class="s2">&quot;created_at&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">created_at</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">nodes</span><span class="p">[</span><span class="s2">&quot;updated_at&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">updated_at</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">one_hot</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">v</span><span class="p">,</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nodes</span><span class="p">[</span><span class="s2">&quot;language&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())}</span>
+    <span class="n">nodes</span><span class="p">[</span><span class="s2">&quot;language&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">one_hot</span><span class="p">[</span><span class="n">lang</span><span class="p">]</span> <span class="k">for</span> <span class="n">lang</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">[</span><span class="s2">&quot;language&quot;</span><span class="p">]]</span>
+
+    <span class="k">if</span> <span class="n">task</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">nodes</span><span class="p">[</span><span class="n">task</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">())</span>
+        <span class="n">features</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">normalize</span><span class="p">:</span>
+        <span class="n">features</span> <span class="o">=</span> <span class="n">features</span> <span class="o">-</span> <span class="n">features</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">features</span> <span class="o">=</span> <span class="n">features</span> <span class="o">/</span> <span class="n">features</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">g</span> <span class="o">=</span> <span class="n">dgl</span><span class="o">.</span><span class="n">graph</span><span class="p">((</span><span class="n">edge_index</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">edge_index</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s2">&quot;feat&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">features</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">label</span>
+    <span class="n">num_classes</span> <span class="o">=</span> <span class="n">label</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">twitch_gamers_data</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">g</span><span class="p">,</span> <span class="n">g</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">],</span> <span class="n">num_classes</span></div>
+
+
+<div class="viewcode-block" id="load_fb100_data"><a class="viewcode-back" href="../../../tmp/graph_datasets.datasets.html#graph_datasets.datasets.linkx.load_fb100_data">[docs]</a><span class="k">def</span> <span class="nf">load_fb100_data</span><span class="p">(</span>
+    <span class="n">dataset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">directory</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">DEFAULT_DATA_DIR</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">dgl</span><span class="o">.</span><span class="n">DGLGraph</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+    <span class="n">data_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="s2">&quot;facebook100&quot;</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_file</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">dataset_name</span><span class="si">}</span><span class="s2">.mat&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">data_file</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">data_file</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">LINKX_URL</span><span class="si">}</span><span class="s2">/facebook100/</span><span class="si">{</span><span class="n">dataset_name</span><span class="si">}</span><span class="s2">.mat?raw=true&quot;</span>
+        <span class="n">download_tip</span><span class="p">(</span>
+            <span class="n">info</span><span class="o">=</span><span class="p">{</span>
+                <span class="s2">&quot;File&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">data</span><span class="p">),</span>
+                <span class="s2">&quot;Download URL&quot;</span><span class="p">:</span> <span class="n">url</span><span class="p">,</span>
+                <span class="s2">&quot;Save Path&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">,</span>
+            <span class="p">}</span>
+        <span class="p">)</span>
+        <span class="n">wget</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">bar</span><span class="o">=</span><span class="n">bar_progress</span><span class="p">)</span>
+
+    <span class="n">mat</span> <span class="o">=</span> <span class="n">sio</span><span class="o">.</span><span class="n">loadmat</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">mat</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">]</span>
+    <span class="n">metadata</span> <span class="o">=</span> <span class="n">mat</span><span class="p">[</span><span class="s2">&quot;local_info&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+    <span class="n">edge_index</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">nonzero</span><span class="p">()),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">long</span><span class="p">)</span>
+    <span class="c1"># gender label, -1 means unlabeled</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="n">metadata</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
+
+    <span class="c1"># make features into one-hot encodings</span>
+    <span class="n">feature_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">metadata</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">),</span> <span class="n">metadata</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">:]))</span>
+    <span class="n">features</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">feature_vals</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+        <span class="n">feat_col</span> <span class="o">=</span> <span class="n">feature_vals</span><span class="p">[:,</span> <span class="n">col</span><span class="p">]</span>
+        <span class="n">features</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">features</span><span class="p">,</span> <span class="n">label_binarize</span><span class="p">(</span><span class="n">feat_col</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">feat_col</span><span class="p">))))</span>
+
+    <span class="n">g</span> <span class="o">=</span> <span class="n">dgl</span><span class="o">.</span><span class="n">graph</span><span class="p">((</span><span class="n">edge_index</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">edge_index</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s2">&quot;feat&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float</span><span class="p">)</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">g</span><span class="p">,</span> <span class="n">g</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">],</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">label</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="load_arxiv_year_data"><a class="viewcode-back" href="../../../tmp/graph_datasets.datasets.html#graph_datasets.datasets.linkx.load_arxiv_year_data">[docs]</a><span class="k">def</span> <span class="nf">load_arxiv_year_data</span><span class="p">(</span>
+    <span class="n">n_classes</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="n">directory</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">DEFAULT_DATA_DIR</span><span class="p">,</span>
+    <span class="n">verbosity</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">dgl</span><span class="o">.</span><span class="n">DGLGraph</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+    <span class="n">graph</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">DglNodePropPredDataset</span><span class="p">(</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;ogbn-arxiv&quot;</span><span class="p">,</span>
+        <span class="n">root</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
+    <span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="n">label</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">as_tensor</span><span class="p">(</span>
+        <span class="n">even_quantile_labels</span><span class="p">(</span>
+            <span class="n">vals</span><span class="o">=</span><span class="n">graph</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span>
+            <span class="n">n_classes</span><span class="o">=</span><span class="n">n_classes</span><span class="p">,</span>
+            <span class="n">verbosity</span><span class="o">=</span><span class="n">verbosity</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">graph</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">label</span>
+
+    <span class="k">return</span> <span class="n">graph</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">label</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Galo.gm.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

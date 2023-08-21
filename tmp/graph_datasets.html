@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>graph_datasets package &mdash; Graph Datasets 0.4.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Graph Datasets
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Datasets</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../rst/table.html">statistics</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Loaders</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../rst/load_data.html">load_data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/graph_datasets.datasets.html">DGL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/graph_datasets.datasets.html#module-graph_datasets.datasets.pyg">PyG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/graph_datasets.datasets.html#module-graph_datasets.datasets.ogb">OGB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/graph_datasets.datasets.html#module-graph_datasets.datasets.linkx">LINKX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/graph_datasets.datasets.html#module-graph_datasets.datasets.critical">CRITICAL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/graph_datasets.datasets.html#module-graph_datasets.datasets.cola">CoLA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/graph_datasets.datasets.html#module-graph_datasets.datasets.sdcn">SDCN</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Sources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../rst/data_info.html">data_info</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Utils</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../rst/graph_datasets.utils.html">utils</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Graph Datasets</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">graph_datasets package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/tmp/graph_datasets.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="graph-datasets-package">
+<h1>graph_datasets package<a class="headerlink" href="#graph-datasets-package" title="Permalink to this heading"></a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="graph_datasets.datasets.html">graph_datasets.datasets package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="graph_datasets.datasets.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graph_datasets.datasets.html#module-graph_datasets.datasets.cola">graph_datasets.datasets.cola module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="graph_datasets.datasets.html#graph_datasets.datasets.cola.load_cola_data"><code class="docutils literal notranslate"><span class="pre">load_cola_data()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="graph_datasets.datasets.html#module-graph_datasets.datasets.critical">graph_datasets.datasets.critical module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="graph_datasets.datasets.html#graph_datasets.datasets.critical.load_critical_dataset"><code class="docutils literal notranslate"><span class="pre">load_critical_dataset()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="graph_datasets.datasets.html#module-graph_datasets.datasets.dgl">graph_datasets.datasets.dgl module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="graph_datasets.datasets.html#graph_datasets.datasets.dgl.load_dgl_data"><code class="docutils literal notranslate"><span class="pre">load_dgl_data()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="graph_datasets.datasets.html#module-graph_datasets.datasets.linkx">graph_datasets.datasets.linkx module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="graph_datasets.datasets.html#graph_datasets.datasets.linkx.even_quantile_labels"><code class="docutils literal notranslate"><span class="pre">even_quantile_labels()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="graph_datasets.datasets.html#graph_datasets.datasets.linkx.load_linkx_data"><code class="docutils literal notranslate"><span class="pre">load_linkx_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="graph_datasets.datasets.html#graph_datasets.datasets.linkx.load_linkx_github"><code class="docutils literal notranslate"><span class="pre">load_linkx_github()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="graph_datasets.datasets.html#graph_datasets.datasets.linkx.load_wiki_data"><code class="docutils literal notranslate"><span class="pre">load_wiki_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="graph_datasets.datasets.html#graph_datasets.datasets.linkx.load_twitch_gamers_data"><code class="docutils literal notranslate"><span class="pre">load_twitch_gamers_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="graph_datasets.datasets.html#graph_datasets.datasets.linkx.load_fb100_data"><code class="docutils literal notranslate"><span class="pre">load_fb100_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="graph_datasets.datasets.html#graph_datasets.datasets.linkx.load_arxiv_year_data"><code class="docutils literal notranslate"><span class="pre">load_arxiv_year_data()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="graph_datasets.datasets.html#module-graph_datasets.datasets.ogb">graph_datasets.datasets.ogb module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="graph_datasets.datasets.html#graph_datasets.datasets.ogb.load_ogb_data"><code class="docutils literal notranslate"><span class="pre">load_ogb_data()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="graph_datasets.datasets.html#module-graph_datasets.datasets.pyg">graph_datasets.datasets.pyg module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="graph_datasets.datasets.html#graph_datasets.datasets.pyg.load_pyg_data"><code class="docutils literal notranslate"><span class="pre">load_pyg_data()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="graph_datasets.datasets.html#module-graph_datasets.datasets.sdcn">graph_datasets.datasets.sdcn module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="graph_datasets.datasets.html#graph_datasets.datasets.sdcn.load_sdcn_data"><code class="docutils literal notranslate"><span class="pre">load_sdcn_data()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="graph_datasets.datasets.html#module-graph_datasets.datasets">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="graph_datasets.utils.html">graph_datasets.utils package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="graph_datasets.utils.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graph_datasets.utils.html#module-graph_datasets.utils.model_management">graph_datasets.utils.model_management module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="graph_datasets.utils.html#graph_datasets.utils.model_management.get_modelfile_path"><code class="docutils literal notranslate"><span class="pre">get_modelfile_path()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="graph_datasets.utils.html#graph_datasets.utils.model_management.check_modelfile_exists"><code class="docutils literal notranslate"><span class="pre">check_modelfile_exists()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="graph_datasets.utils.html#graph_datasets.utils.model_management.save_model"><code class="docutils literal notranslate"><span class="pre">save_model()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="graph_datasets.utils.html#graph_datasets.utils.model_management.load_model"><code class="docutils literal notranslate"><span class="pre">load_model()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="graph_datasets.utils.html#graph_datasets.utils.model_management.set_seed"><code class="docutils literal notranslate"><span class="pre">set_seed()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="graph_datasets.utils.html#graph_datasets.utils.model_management.set_device"><code class="docutils literal notranslate"><span class="pre">set_device()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="graph_datasets.utils.html#module-graph_datasets.utils.output">graph_datasets.utils.output module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="graph_datasets.utils.html#graph_datasets.utils.output.make_parent_dirs"><code class="docutils literal notranslate"><span class="pre">make_parent_dirs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="graph_datasets.utils.html#graph_datasets.utils.output.refresh_file"><code class="docutils literal notranslate"><span class="pre">refresh_file()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="graph_datasets.utils.html#graph_datasets.utils.output.csv2file"><code class="docutils literal notranslate"><span class="pre">csv2file()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="graph_datasets.utils.html#module-graph_datasets.utils.statistics">graph_datasets.utils.statistics module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="graph_datasets.utils.html#graph_datasets.utils.statistics.node_homo"><code class="docutils literal notranslate"><span class="pre">node_homo()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="graph_datasets.utils.html#graph_datasets.utils.statistics.edge_homo"><code class="docutils literal notranslate"><span class="pre">edge_homo()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="graph_datasets.utils.html#graph_datasets.utils.statistics.get_long_edges"><code class="docutils literal notranslate"><span class="pre">get_long_edges()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="graph_datasets.utils.html#graph_datasets.utils.statistics.get_same_class_deg"><code class="docutils literal notranslate"><span class="pre">get_same_class_deg()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="graph_datasets.utils.html#graph_datasets.utils.statistics.statistics"><code class="docutils literal notranslate"><span class="pre">statistics()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="graph_datasets.utils.html#module-graph_datasets.utils">Module contents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="graph_datasets.utils.html#graph_datasets.utils.get_str_time"><code class="docutils literal notranslate"><span class="pre">get_str_time()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="graph_datasets.utils.html#graph_datasets.utils.format_value"><code class="docutils literal notranslate"><span class="pre">format_value()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="graph_datasets.utils.html#graph_datasets.utils.tab_printer"><code class="docutils literal notranslate"><span class="pre">tab_printer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="graph_datasets.utils.html#graph_datasets.utils.download_tip"><code class="docutils literal notranslate"><span class="pre">download_tip()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="graph_datasets.utils.html#graph_datasets.utils.print_dataset_info"><code class="docutils literal notranslate"><span class="pre">print_dataset_info()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="graph_datasets.utils.html#graph_datasets.utils.bar_progress"><code class="docutils literal notranslate"><span class="pre">bar_progress()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="graph_datasets.utils.html#graph_datasets.utils.download_from_google_drive"><code class="docutils literal notranslate"><span class="pre">download_from_google_drive()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-graph_datasets.data_info">
+<span id="graph-datasets-data-info-module"></span><h2>graph_datasets.data_info module<a class="headerlink" href="#module-graph_datasets.data_info" title="Permalink to this heading"></a></h2>
+<p>Data source information.</p>
+<dl class="py data">
+<dt class="sig sig-object py" id="graph_datasets.data_info.DEFAULT_DATA_DIR">
+<span class="sig-prename descclassname"><span class="pre">graph_datasets.data_info.</span></span><span class="sig-name descname"><span class="pre">DEFAULT_DATA_DIR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'./data'</span></em><a class="headerlink" href="#graph_datasets.data_info.DEFAULT_DATA_DIR" title="Permalink to this definition"></a></dt>
+<dd><p>Default directory for data saving.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="graph_datasets.data_info.SDCN_URL">
+<span class="sig-prename descclassname"><span class="pre">graph_datasets.data_info.</span></span><span class="sig-name descname"><span class="pre">SDCN_URL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'https://github.com/bdy9527/SDCN/blob/da6bb007b7'</span></em><a class="headerlink" href="#graph_datasets.data_info.SDCN_URL" title="Permalink to this definition"></a></dt>
+<dd><p>Downloading url of datasets in paper
+<a class="reference external" href="https://github.com/bdy9527/SDCN">SDCN</a>.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="graph_datasets.data_info.COLA_URL">
+<span class="sig-prename descclassname"><span class="pre">graph_datasets.data_info.</span></span><span class="sig-name descname"><span class="pre">COLA_URL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'https://github.com/GRAND-Lab/CoLA/blob/main'</span></em><a class="headerlink" href="#graph_datasets.data_info.COLA_URL" title="Permalink to this definition"></a></dt>
+<dd><p>Downloading url of datasets in paper
+<a class="reference external" href="https://github.com/GRAND-Lab/CoLA">CoLA</a>.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="graph_datasets.data_info.LINKX_URL">
+<span class="sig-prename descclassname"><span class="pre">graph_datasets.data_info.</span></span><span class="sig-name descname"><span class="pre">LINKX_URL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'https://github.com/CUAI/Non-Homophily-Large-Scale/blob/82f8f05c5c/data'</span></em><a class="headerlink" href="#graph_datasets.data_info.LINKX_URL" title="Permalink to this definition"></a></dt>
+<dd><p>Downloading url of datasets in paper
+<a class="reference external" href="https://github.com/CUAI/Non-Homophily-Large-Scale">LINKX</a>.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="graph_datasets.data_info.CRITICAL_URL">
+<span class="sig-prename descclassname"><span class="pre">graph_datasets.data_info.</span></span><span class="sig-name descname"><span class="pre">CRITICAL_URL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'https://github.com/yandex-research/heterophilous-graphs/blob/a431395/data'</span></em><a class="headerlink" href="#graph_datasets.data_info.CRITICAL_URL" title="Permalink to this definition"></a></dt>
+<dd><p>Downloading url of datasets in paper
+<a class="reference external" href="https://openreview.net/pdf?id=tJbbQfw-5wv">A Critical Look at the Evaluation of GNNs Under Heterophily:
+Are We Really Making Progress?*</a>.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="graph_datasets.data_info.PYG_DATASETS">
+<span class="sig-prename descclassname"><span class="pre">graph_datasets.data_info.</span></span><span class="sig-name descname"><span class="pre">PYG_DATASETS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['cora',</span> <span class="pre">'citeseer',</span> <span class="pre">'pubmed',</span> <span class="pre">'corafull',</span> <span class="pre">'reddit',</span> <span class="pre">'chameleon',</span> <span class="pre">'squirrel',</span> <span class="pre">'actor',</span> <span class="pre">'cornell',</span> <span class="pre">'texas',</span> <span class="pre">'wisconsin',</span> <span class="pre">'computers',</span> <span class="pre">'photo',</span> <span class="pre">'cs',</span> <span class="pre">'physics',</span> <span class="pre">'wikics']</span></em><a class="headerlink" href="#graph_datasets.data_info.PYG_DATASETS" title="Permalink to this definition"></a></dt>
+<dd><p>Supported datasets of pyG.</p>
+<p>NOTE: main difference of dgl and pyG datasets
+- dgl has self-loops while pyG removes them.
+- dgl row normalizes features while pyG does not.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="graph_datasets.data_info.DGL_DATASETS">
+<span class="sig-prename descclassname"><span class="pre">graph_datasets.data_info.</span></span><span class="sig-name descname"><span class="pre">DGL_DATASETS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['cora',</span> <span class="pre">'citeseer',</span> <span class="pre">'pubmed',</span> <span class="pre">'corafull',</span> <span class="pre">'reddit',</span> <span class="pre">'chameleon',</span> <span class="pre">'squirrel',</span> <span class="pre">'actor',</span> <span class="pre">'cornell',</span> <span class="pre">'texas',</span> <span class="pre">'wisconsin']</span></em><a class="headerlink" href="#graph_datasets.data_info.DGL_DATASETS" title="Permalink to this definition"></a></dt>
+<dd><p>Supported datasets of dgl.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="graph_datasets.data_info.SDCN_DATASETS">
+<span class="sig-prename descclassname"><span class="pre">graph_datasets.data_info.</span></span><span class="sig-name descname"><span class="pre">SDCN_DATASETS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['dblp',</span> <span class="pre">'acm']</span></em><a class="headerlink" href="#graph_datasets.data_info.SDCN_DATASETS" title="Permalink to this definition"></a></dt>
+<dd><p>Datasets in paper
+<a class="reference external" href="https://github.com/bdy9527/SDCN">SDCN</a>.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="graph_datasets.data_info.COLA_DATASETS">
+<span class="sig-prename descclassname"><span class="pre">graph_datasets.data_info.</span></span><span class="sig-name descname"><span class="pre">COLA_DATASETS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['blogcatalog',</span> <span class="pre">'flickr']</span></em><a class="headerlink" href="#graph_datasets.data_info.COLA_DATASETS" title="Permalink to this definition"></a></dt>
+<dd><p>Datasets in paper
+<a class="reference external" href="https://github.com/GRAND-Lab/CoLA">CoLA</a>.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="graph_datasets.data_info.LINKX_DATASETS">
+<span class="sig-prename descclassname"><span class="pre">graph_datasets.data_info.</span></span><span class="sig-name descname"><span class="pre">LINKX_DATASETS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['snap-patents',</span> <span class="pre">'pokec',</span> <span class="pre">'genius',</span> <span class="pre">'arxiv-year',</span> <span class="pre">'Penn94',</span> <span class="pre">'twitch-gamers',</span> <span class="pre">'wiki',</span> <span class="pre">'cornell',</span> <span class="pre">'chameleon',</span> <span class="pre">'film',</span> <span class="pre">'squirrel',</span> <span class="pre">'texas',</span> <span class="pre">'wisconsin',</span> <span class="pre">'yelp-chi',</span> <span class="pre">'deezer-europe',</span> <span class="pre">'Amherst41',</span> <span class="pre">'Cornell5',</span> <span class="pre">'Johns</span> <span class="pre">Hopkins55',</span> <span class="pre">'Reed98']</span></em><a class="headerlink" href="#graph_datasets.data_info.LINKX_DATASETS" title="Permalink to this definition"></a></dt>
+<dd><p>Datasets in paper
+<a class="reference external" href="https://github.com/CUAI/Non-Homophily-Large-Scale">LINKX</a>.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="graph_datasets.data_info.CRITICAL_DATASETS">
+<span class="sig-prename descclassname"><span class="pre">graph_datasets.data_info.</span></span><span class="sig-name descname"><span class="pre">CRITICAL_DATASETS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['roman-empire',</span> <span class="pre">'amazon-ratings',</span> <span class="pre">'minesweeper',</span> <span class="pre">'tolokers',</span> <span class="pre">'questions']</span></em><a class="headerlink" href="#graph_datasets.data_info.CRITICAL_DATASETS" title="Permalink to this definition"></a></dt>
+<dd><p>Datasets in paper
+<a class="reference external" href="https://openreview.net/pdf?id=tJbbQfw-5wv">A Critical Look at the Evaluation of GNNs Under Heterophily:
+Are We Really Making Progress?*</a>.</p>
+</dd></dl>
+
+</section>
+<section id="module-graph_datasets.load_data">
+<span id="graph-datasets-load-data-module"></span><h2>graph_datasets.load_data module<a class="headerlink" href="#module-graph_datasets.load_data" title="Permalink to this heading"></a></h2>
+<p>Load Graph Datasets</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="graph_datasets.load_data.load_data">
+<span class="sig-prename descclassname"><span class="pre">graph_datasets.load_data.</span></span><span class="sig-name descname"><span class="pre">load_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./data'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbosity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'pyg'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rm_self_loop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_simple</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">DGLGraph</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/graph_datasets/load_data.html#load_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#graph_datasets.load_data.load_data" title="Permalink to this definition"></a></dt>
+<dd><p>Load graphs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset_name</strong> (<em>str</em>) – Dataset name.</p></li>
+<li><p><strong>directory</strong> (<em>str</em><em>, </em><em>optional</em>) – Raw dir for loading or saving.             Defaults to DEFAULT_DATA_DIR=os.path.abspath(“./data”).</p></li>
+<li><p><strong>verbosity</strong> (<em>int</em><em>, </em><em>optional</em>) – Output debug information.             The greater, the more detailed. Defaults to 0.</p></li>
+<li><p><strong>source</strong> (<em>str</em><em>, </em><em>optional</em>) – Source for data loading. Defaults to “pyg”.</p></li>
+<li><p><strong>rm_self_loop</strong> (<em>str</em><em>, </em><em>optional</em>) – Remove self loops. Defaults to True.</p></li>
+<li><p><strong>to_simple</strong> (<em>str</em><em>, </em><em>optional</em>) – Convert to a simple graph with no duplicate undirected edges.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>NotImplementedError</strong> – Dataset unknown.</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>[graph, label, n_clusters]</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tuple[dgl.DGLGraph, torch.Tensor, int]</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graph_datasets</span> <span class="kn">import</span> <span class="n">load_data</span>
+<span class="n">graph</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">n_clusters</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span>
+    <span class="n">dataset_name</span><span class="o">=</span><span class="s1">&#39;cora&#39;</span><span class="p">,</span>
+    <span class="n">directory</span><span class="o">=</span><span class="s2">&quot;./data&quot;</span><span class="p">,</span>
+    <span class="n">source</span><span class="o">=</span><span class="s1">&#39;pyg&#39;</span><span class="p">,</span>
+    <span class="n">verbosity</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="module-graph_datasets">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-graph_datasets" title="Permalink to this heading"></a></h2>
+<p>Graph Datasets</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Galo.gm.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

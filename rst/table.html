@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>statistics &mdash; Graph Datasets 0.4.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="load_data" href="load_data.html" />
+    <link rel="prev" title="Welcome to Graph Datasets’ documentation!" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Graph Datasets
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Datasets</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">statistics</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Loaders</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="load_data.html">load_data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph_datasets.datasets.html">DGL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph_datasets.datasets.html#module-graph_datasets.datasets.pyg">PyG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph_datasets.datasets.html#module-graph_datasets.datasets.ogb">OGB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph_datasets.datasets.html#module-graph_datasets.datasets.linkx">LINKX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph_datasets.datasets.html#module-graph_datasets.datasets.critical">CRITICAL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph_datasets.datasets.html#module-graph_datasets.datasets.cola">CoLA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph_datasets.datasets.html#module-graph_datasets.datasets.sdcn">SDCN</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Sources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="data_info.html">data_info</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Utils</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="graph_datasets.utils.html">utils</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Graph Datasets</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">statistics</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/rst/table.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="statistics">
+<h1>statistics<a class="headerlink" href="#statistics" title="Permalink to this heading"></a></h1>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>idx</p></th>
+<th class="head"><p>source</p></th>
+<th class="head"><p>dataset</p></th>
+<th class="head"><p>n_nodes</p></th>
+<th class="head"><p>n_feats</p></th>
+<th class="head"><p>n_edges</p></th>
+<th class="head"><p>n_clusters</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>pyg</p></td>
+<td><p>cora</p></td>
+<td><p>2,708</p></td>
+<td><p>1,433</p></td>
+<td><p>10,556</p></td>
+<td><p>7</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>pyg</p></td>
+<td><p>citeseer</p></td>
+<td><p>3,327</p></td>
+<td><p>3,703</p></td>
+<td><p>9,104</p></td>
+<td><p>6</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>pyg</p></td>
+<td><p>pubmed</p></td>
+<td><p>19,717</p></td>
+<td><p>500</p></td>
+<td><p>88,648</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>pyg</p></td>
+<td><p>corafull</p></td>
+<td><p>19,793</p></td>
+<td><p>8,710</p></td>
+<td><p>126,842</p></td>
+<td><p>70</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>pyg</p></td>
+<td><p>reddit</p></td>
+<td><p>232,965</p></td>
+<td><p>602</p></td>
+<td><dl class="simple">
+<dt>114,615,89</dt><dd><p>2</p>
+</dd>
+</dl>
+</td>
+<td><p>41</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>pyg</p></td>
+<td><p>chameleon</p></td>
+<td><p>2,277</p></td>
+<td><p>2,325</p></td>
+<td><p>62,742</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>pyg</p></td>
+<td><p>squirrel</p></td>
+<td><p>5,201</p></td>
+<td><p>2,089</p></td>
+<td><p>396,706</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>pyg</p></td>
+<td><p>actor</p></td>
+<td><p>7,600</p></td>
+<td><p>932</p></td>
+<td><p>53,318</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>pyg</p></td>
+<td><p>cornell</p></td>
+<td><p>183</p></td>
+<td><p>1,703</p></td>
+<td><p>554</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-odd"><td><p>10</p></td>
+<td><p>pyg</p></td>
+<td><p>texas</p></td>
+<td><p>183</p></td>
+<td><p>1,703</p></td>
+<td><p>558</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-even"><td><p>11</p></td>
+<td><p>pyg</p></td>
+<td><p>wisconsin</p></td>
+<td><p>251</p></td>
+<td><p>1,703</p></td>
+<td><p>900</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-odd"><td><p>12</p></td>
+<td><p>pyg</p></td>
+<td><p>computers</p></td>
+<td><p>13,752</p></td>
+<td><p>767</p></td>
+<td><p>491,722</p></td>
+<td><p>10</p></td>
+</tr>
+<tr class="row-even"><td><p>13</p></td>
+<td><p>pyg</p></td>
+<td><p>photo</p></td>
+<td><p>7,650</p></td>
+<td><p>745</p></td>
+<td><p>238,162</p></td>
+<td><p>8</p></td>
+</tr>
+<tr class="row-odd"><td><p>14</p></td>
+<td><p>pyg</p></td>
+<td><p>cs</p></td>
+<td><p>18,333</p></td>
+<td><p>6,805</p></td>
+<td><p>163,788</p></td>
+<td><p>15</p></td>
+</tr>
+<tr class="row-even"><td><p>15</p></td>
+<td><p>pyg</p></td>
+<td><p>physics</p></td>
+<td><p>34,493</p></td>
+<td><p>8,415</p></td>
+<td><p>495,924</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-odd"><td><p>16</p></td>
+<td><p>pyg</p></td>
+<td><p>wikics</p></td>
+<td><p>11,701</p></td>
+<td><p>300</p></td>
+<td><p>431,206</p></td>
+<td><p>10</p></td>
+</tr>
+<tr class="row-even"><td><p>17</p></td>
+<td><p>dgl</p></td>
+<td><p>cora</p></td>
+<td><p>2,708</p></td>
+<td><p>1,433</p></td>
+<td><p>10,556</p></td>
+<td><p>7</p></td>
+</tr>
+<tr class="row-odd"><td><p>18</p></td>
+<td><p>dgl</p></td>
+<td><p>citeseer</p></td>
+<td><p>3,327</p></td>
+<td><p>3,703</p></td>
+<td><p>9,104</p></td>
+<td><p>6</p></td>
+</tr>
+<tr class="row-even"><td><p>19</p></td>
+<td><p>dgl</p></td>
+<td><p>pubmed</p></td>
+<td><p>19,717</p></td>
+<td><p>500</p></td>
+<td><p>88,648</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-odd"><td><p>20</p></td>
+<td><p>dgl</p></td>
+<td><p>corafull</p></td>
+<td><p>19,793</p></td>
+<td><p>8,710</p></td>
+<td><p>126,842</p></td>
+<td><p>70</p></td>
+</tr>
+<tr class="row-even"><td><p>21</p></td>
+<td><p>dgl</p></td>
+<td><p>reddit</p></td>
+<td><p>232,965</p></td>
+<td><p>602</p></td>
+<td><dl class="simple">
+<dt>114,615,89</dt><dd><p>2</p>
+</dd>
+</dl>
+</td>
+<td><p>41</p></td>
+</tr>
+<tr class="row-odd"><td><p>22</p></td>
+<td><p>dgl</p></td>
+<td><p>chameleon</p></td>
+<td><p>2,277</p></td>
+<td><p>2,325</p></td>
+<td><p>62,742</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-even"><td><p>23</p></td>
+<td><p>dgl</p></td>
+<td><p>squirrel</p></td>
+<td><p>5,201</p></td>
+<td><p>2,089</p></td>
+<td><p>396,706</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-odd"><td><p>24</p></td>
+<td><p>dgl</p></td>
+<td><p>actor</p></td>
+<td><p>7,600</p></td>
+<td><p>932</p></td>
+<td><p>53,318</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-even"><td><p>25</p></td>
+<td><p>dgl</p></td>
+<td><p>cornell</p></td>
+<td><p>183</p></td>
+<td><p>1,703</p></td>
+<td><p>554</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-odd"><td><p>26</p></td>
+<td><p>dgl</p></td>
+<td><p>texas</p></td>
+<td><p>183</p></td>
+<td><p>1,703</p></td>
+<td><p>558</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-even"><td><p>27</p></td>
+<td><p>dgl</p></td>
+<td><p>wisconsin</p></td>
+<td><p>251</p></td>
+<td><p>1,703</p></td>
+<td><p>900</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-odd"><td><p>28</p></td>
+<td><p>ogb</p></td>
+<td><p>products</p></td>
+<td><p>2,449,029</p></td>
+<td><p>100</p></td>
+<td><dl class="simple">
+<dt>123,718,02</dt><dd><p>4</p>
+</dd>
+</dl>
+</td>
+<td><p>47</p></td>
+</tr>
+<tr class="row-even"><td><p>29</p></td>
+<td><p>ogb</p></td>
+<td><p>arxiv</p></td>
+<td><p>169,343</p></td>
+<td><p>128</p></td>
+<td><p>2,315,598</p></td>
+<td><p>40</p></td>
+</tr>
+<tr class="row-odd"><td><p>30</p></td>
+<td><p>sdcn</p></td>
+<td><p>dblp</p></td>
+<td><p>4,057</p></td>
+<td><p>334</p></td>
+<td><p>7,056</p></td>
+<td><p>4</p></td>
+</tr>
+<tr class="row-even"><td><p>31</p></td>
+<td><p>sdcn</p></td>
+<td><p>acm</p></td>
+<td><p>3,025</p></td>
+<td><p>1,870</p></td>
+<td><p>26,256</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-odd"><td><p>32</p></td>
+<td><p>cola</p></td>
+<td><p>blogcatalog</p></td>
+<td><p>5,196</p></td>
+<td><p>8,189</p></td>
+<td><p>343,486</p></td>
+<td><p>6</p></td>
+</tr>
+<tr class="row-even"><td><p>33</p></td>
+<td><p>cola</p></td>
+<td><p>flickr</p></td>
+<td><p>7,575</p></td>
+<td><p>12,047</p></td>
+<td><p>479,476</p></td>
+<td><p>9</p></td>
+</tr>
+<tr class="row-odd"><td><p>34</p></td>
+<td><p>linkx</p></td>
+<td><blockquote>
+<div><p>snap-</p>
+</div></blockquote>
+<p>patents</p>
+</td>
+<td><p>2,923,922</p></td>
+<td><p>269</p></td>
+<td><p>27,945,090</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-even"><td><p>35</p></td>
+<td><p>linkx</p></td>
+<td><p>pokec</p></td>
+<td><p>1,632,803</p></td>
+<td><p>65</p></td>
+<td><p>44,603,928</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-odd"><td><p>36</p></td>
+<td><p>linkx</p></td>
+<td><p>genius</p></td>
+<td><p>421,961</p></td>
+<td><p>12</p></td>
+<td><p>1,845,736</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-even"><td><p>37</p></td>
+<td><p>linkx</p></td>
+<td><p>arxiv-year</p></td>
+<td><p>169,343</p></td>
+<td><p>128</p></td>
+<td><p>2,315,598</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-odd"><td><p>38</p></td>
+<td><p>linkx</p></td>
+<td><p>Penn94</p></td>
+<td><p>41,554</p></td>
+<td><p>4,814</p></td>
+<td><p>2,724,458</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>39</p></td>
+<td><p>linkx</p></td>
+<td><p>twitch-
+gamers</p></td>
+<td><p>168,114</p></td>
+<td><p>7</p></td>
+<td><p>13,595,114</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>40</p></td>
+<td><p>linkx</p></td>
+<td><p>wiki</p></td>
+<td><p>1,925,342</p></td>
+<td><p>600</p></td>
+<td><dl class="simple">
+<dt>485,014,13</dt><dd><p>8</p>
+</dd>
+</dl>
+</td>
+<td><p>6</p></td>
+</tr>
+<tr class="row-even"><td><p>41</p></td>
+<td><p>linkx</p></td>
+<td><p>cornell</p></td>
+<td><p>183</p></td>
+<td><p>1,703</p></td>
+<td><p>554</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-odd"><td><p>42</p></td>
+<td><p>linkx</p></td>
+<td><p>chameleon</p></td>
+<td><p>2,277</p></td>
+<td><p>2,325</p></td>
+<td><p>62,742</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-even"><td><p>43</p></td>
+<td><p>linkx</p></td>
+<td><p>film</p></td>
+<td><p>7,600</p></td>
+<td><p>932</p></td>
+<td><p>53,318</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-odd"><td><p>44</p></td>
+<td><p>linkx</p></td>
+<td><p>squirrel</p></td>
+<td><p>5,201</p></td>
+<td><p>2,089</p></td>
+<td><p>396,706</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-even"><td><p>45</p></td>
+<td><p>linkx</p></td>
+<td><p>texas</p></td>
+<td><p>183</p></td>
+<td><p>1,703</p></td>
+<td><p>558</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-odd"><td><p>46</p></td>
+<td><p>linkx</p></td>
+<td><p>wisconsin</p></td>
+<td><p>251</p></td>
+<td><p>1,703</p></td>
+<td><p>900</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-even"><td><p>47</p></td>
+<td><p>linkx</p></td>
+<td><p>yelp-chi</p></td>
+<td><p>45,954</p></td>
+<td><p>32</p></td>
+<td><p>7,693,958</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>48</p></td>
+<td><p>linkx</p></td>
+<td><p>deezer-
+europe</p></td>
+<td><p>28,281</p></td>
+<td><p>31,241</p></td>
+<td><p>185,504</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-even"><td><p>49</p></td>
+<td><p>linkx</p></td>
+<td><p>Amherst41</p></td>
+<td><p>2,235</p></td>
+<td><p>1,193</p></td>
+<td><p>181,908</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-odd"><td><p>50</p></td>
+<td><p>linkx</p></td>
+<td><p>Cornell5</p></td>
+<td><p>18,660</p></td>
+<td><p>4,735</p></td>
+<td><p>1,581,554</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>51</p></td>
+<td><p>linkx</p></td>
+<td><blockquote>
+<div><p>Johns</p>
+</div></blockquote>
+<p>Hopkins55</p>
+</td>
+<td><p>5,180</p></td>
+<td><p>2,406</p></td>
+<td><p>373,172</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-odd"><td><p>52</p></td>
+<td><p>linkx</p></td>
+<td><p>Reed98</p></td>
+<td><p>962</p></td>
+<td><p>745</p></td>
+<td><p>37,624</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>53</p></td>
+<td><p>critical</p></td>
+<td><p>roman-
+empire</p></td>
+<td><p>22,662</p></td>
+<td><p>300</p></td>
+<td><p>65,854</p></td>
+<td><p>18</p></td>
+</tr>
+<tr class="row-odd"><td><p>54</p></td>
+<td><p>critical</p></td>
+<td><p>amazon-
+ratings</p></td>
+<td><p>24,492</p></td>
+<td><p>300</p></td>
+<td><p>186,100</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-even"><td><p>55</p></td>
+<td><p>critical</p></td>
+<td><p>minesweeper</p></td>
+<td><p>10,000</p></td>
+<td><p>7</p></td>
+<td><p>78,804</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>56</p></td>
+<td><p>critical</p></td>
+<td><p>tolokers</p></td>
+<td><p>11,758</p></td>
+<td><p>10</p></td>
+<td><p>1,038,000</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-even"><td><p>57</p></td>
+<td><p>critical</p></td>
+<td><p>questions</p></td>
+<td><p>48,921</p></td>
+<td><p>301</p></td>
+<td><p>307,080</p></td>
+<td><p>2</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to Graph Datasets’ documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="load_data.html" class="btn btn-neutral float-right" title="load_data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Galo.gm.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+graph\_datasets package
+=======================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   graph_datasets.datasets
+   graph_datasets.utils
+
+Submodules
+----------
+
+graph\_datasets.data\_info module
+---------------------------------
+
+.. automodule:: graph_datasets.data_info
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+graph\_datasets.load\_data module
+---------------------------------
+
+.. automodule:: graph_datasets.load_data
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: graph_datasets
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,37 @@
+graph\_datasets.utils package
+=============================
+
+Submodules
+----------
+
+graph\_datasets.utils.model\_management module
+----------------------------------------------
+
+.. automodule:: graph_datasets.utils.model_management
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+graph\_datasets.utils.output module
+-----------------------------------
+
+.. automodule:: graph_datasets.utils.output
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+graph\_datasets.utils.statistics module
+---------------------------------------
+
+.. automodule:: graph_datasets.utils.statistics
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: graph_datasets.utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
