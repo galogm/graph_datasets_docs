@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Welcome to Graph Datasets’ documentation! &mdash; Graph Datasets 0.4.0 documentation</title>
+  <title>Welcome to Graph Datasets’ documentation! &mdash; Graph Datasets 0.5.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -24,7 +24,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="statistics" href="rst/table.html" /> 
+    <link rel="next" title="dataset cheatsheet" href="rst/table.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -48,7 +48,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Datasets</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="rst/table.html">statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rst/table.html">dataset cheatsheet</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Loaders</span></p>
 <ul>
@@ -67,7 +67,11 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Utils</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="rst/graph_datasets.utils.html">utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rst/graph_datasets.utils.html">evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rst/graph_datasets.utils.html#module-graph_datasets.utils.statistics">statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rst/graph_datasets.utils.html#module-graph_datasets.utils.model_management">model management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rst/graph_datasets.utils.html#module-graph_datasets.utils.output">output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rst/graph_datasets.utils.html#module-graph_datasets.utils.common">common</a></li>
 </ul>
 
         </div>
@@ -99,7 +103,7 @@
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Datasets</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="rst/table.html">statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rst/table.html">dataset cheatsheet</a></li>
 </ul>
 </div>
 <div class="toctree-wrapper compound">
@@ -160,37 +164,33 @@
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Utils</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="rst/graph_datasets.utils.html">utils</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="rst/graph_datasets.utils.html#module-graph_datasets.utils.evaluation.evaluation">evaluation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="rst/graph_datasets.utils.html#graph_datasets.utils.evaluation.evaluation.evaluate_from_embed_file"><code class="docutils literal notranslate"><span class="pre">evaluate_from_embed_file()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="rst/graph_datasets.utils.html#graph_datasets.utils.evaluation.evaluation.save_to_csv_files"><code class="docutils literal notranslate"><span class="pre">save_to_csv_files()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="rst/graph_datasets.utils.html">evaluation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rst/graph_datasets.utils.html#graph_datasets.utils.evaluation.evaluation.evaluate_from_embed_file"><code class="docutils literal notranslate"><span class="pre">evaluate_from_embed_file()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="rst/graph_datasets.utils.html#module-graph_datasets.utils.statistics">statistics</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="rst/graph_datasets.utils.html#graph_datasets.utils.statistics.node_homo"><code class="docutils literal notranslate"><span class="pre">node_homo()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="rst/graph_datasets.utils.html#graph_datasets.utils.statistics.edge_homo"><code class="docutils literal notranslate"><span class="pre">edge_homo()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="rst/graph_datasets.utils.html#graph_datasets.utils.statistics.statistics"><code class="docutils literal notranslate"><span class="pre">statistics()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="rst/graph_datasets.utils.html#module-graph_datasets.utils.statistics">statistics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rst/graph_datasets.utils.html#graph_datasets.utils.statistics.node_homo"><code class="docutils literal notranslate"><span class="pre">node_homo()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rst/graph_datasets.utils.html#graph_datasets.utils.statistics.edge_homo"><code class="docutils literal notranslate"><span class="pre">edge_homo()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rst/graph_datasets.utils.html#graph_datasets.utils.statistics.statistics"><code class="docutils literal notranslate"><span class="pre">statistics()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="rst/graph_datasets.utils.html#module-graph_datasets.utils.model_management">model management</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="rst/graph_datasets.utils.html#graph_datasets.utils.model_management.save_model"><code class="docutils literal notranslate"><span class="pre">save_model()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="rst/graph_datasets.utils.html#graph_datasets.utils.model_management.load_model"><code class="docutils literal notranslate"><span class="pre">load_model()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="rst/graph_datasets.utils.html#graph_datasets.utils.model_management.set_seed"><code class="docutils literal notranslate"><span class="pre">set_seed()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="rst/graph_datasets.utils.html#graph_datasets.utils.model_management.set_device"><code class="docutils literal notranslate"><span class="pre">set_device()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="rst/graph_datasets.utils.html#module-graph_datasets.utils.model_management">model management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rst/graph_datasets.utils.html#graph_datasets.utils.model_management.save_model"><code class="docutils literal notranslate"><span class="pre">save_model()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rst/graph_datasets.utils.html#graph_datasets.utils.model_management.load_model"><code class="docutils literal notranslate"><span class="pre">load_model()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rst/graph_datasets.utils.html#graph_datasets.utils.model_management.set_seed"><code class="docutils literal notranslate"><span class="pre">set_seed()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rst/graph_datasets.utils.html#graph_datasets.utils.model_management.set_device"><code class="docutils literal notranslate"><span class="pre">set_device()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="rst/graph_datasets.utils.html#module-graph_datasets.utils.output">output</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="rst/graph_datasets.utils.html#graph_datasets.utils.output.make_parent_dirs"><code class="docutils literal notranslate"><span class="pre">make_parent_dirs()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="rst/graph_datasets.utils.html#graph_datasets.utils.output.refresh_file"><code class="docutils literal notranslate"><span class="pre">refresh_file()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="rst/graph_datasets.utils.html#graph_datasets.utils.output.csv2file"><code class="docutils literal notranslate"><span class="pre">csv2file()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="rst/graph_datasets.utils.html#module-graph_datasets.utils.output">output</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rst/graph_datasets.utils.html#graph_datasets.utils.output.make_parent_dirs"><code class="docutils literal notranslate"><span class="pre">make_parent_dirs()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rst/graph_datasets.utils.html#graph_datasets.utils.output.refresh_file"><code class="docutils literal notranslate"><span class="pre">refresh_file()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rst/graph_datasets.utils.html#graph_datasets.utils.output.csv2file"><code class="docutils literal notranslate"><span class="pre">csv2file()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="rst/graph_datasets.utils.html#module-graph_datasets.utils.common">common</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="rst/graph_datasets.utils.html#graph_datasets.utils.common.get_str_time"><code class="docutils literal notranslate"><span class="pre">get_str_time()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="rst/graph_datasets.utils.html#graph_datasets.utils.common.tab_printer"><code class="docutils literal notranslate"><span class="pre">tab_printer()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="rst/graph_datasets.utils.html#graph_datasets.utils.common.download_from_google_drive"><code class="docutils literal notranslate"><span class="pre">download_from_google_drive()</span></code></a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="rst/graph_datasets.utils.html#module-graph_datasets.utils.common">common</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rst/graph_datasets.utils.html#graph_datasets.utils.common.get_str_time"><code class="docutils literal notranslate"><span class="pre">get_str_time()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rst/graph_datasets.utils.html#graph_datasets.utils.common.tab_printer"><code class="docutils literal notranslate"><span class="pre">tab_printer()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rst/graph_datasets.utils.html#graph_datasets.utils.common.download_from_google_drive"><code class="docutils literal notranslate"><span class="pre">download_from_google_drive()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -207,7 +207,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="rst/table.html" class="btn btn-neutral float-right" title="statistics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="rst/table.html" class="btn btn-neutral float-right" title="dataset cheatsheet" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

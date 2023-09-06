@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>graph_datasets.utils.evaluation.evaluation &mdash; Graph Datasets 0.4.0 documentation</title>
+  <title>graph_datasets.utils.evaluation.evaluation &mdash; Graph Datasets 0.5.0 documentation</title>
       <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
@@ -46,7 +46,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Datasets</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../rst/table.html">statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../rst/table.html">dataset cheatsheet</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Loaders</span></p>
 <ul>
@@ -65,7 +65,11 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Utils</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../rst/graph_datasets.utils.html">utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../rst/graph_datasets.utils.html">evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../rst/graph_datasets.utils.html#module-graph_datasets.utils.statistics">statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../rst/graph_datasets.utils.html#module-graph_datasets.utils.model_management">model management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../rst/graph_datasets.utils.html#module-graph_datasets.utils.output">output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../rst/graph_datasets.utils.html#module-graph_datasets.utils.common">common</a></li>
 </ul>
 
         </div>
@@ -139,12 +143,12 @@
 <span class="sd">    Example:</span>
 <span class="sd">        .. code-block:: python</span>
 
-<span class="sd">            from graph_datasets import evaluate_embed_file</span>
+<span class="sd">            from graph_datasets import evaluate_from_embed_file</span>
 
 <span class="sd">            method_name=&#39;orderedgnn&#39;</span>
 <span class="sd">            data_name=&#39;texas&#39;</span>
 
-<span class="sd">            clustering_res, classification_res = evaluate_embed_file(</span>
+<span class="sd">            clustering_res, classification_res = evaluate_from_embed_file(</span>
 <span class="sd">                f&#39;{data_name}_{method_name}_embeds.pth&#39;,</span>
 <span class="sd">                f&#39;{data_name}_data.pth&#39;,</span>
 <span class="sd">                save_path=&#39;./save/&#39;,</span>
@@ -202,7 +206,7 @@
     <span class="n">add_info</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span>
     <span class="n">csv_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">save_path</span><span class="o">=</span><span class="s2">&quot;./results&quot;</span><span class="p">,</span>
-<span class="p">):</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Save the evaluation results to a local csv file.</span>
 
 <span class="sd">    Args:</span>
@@ -214,13 +218,13 @@
 <span class="sd">    Example:</span>
 <span class="sd">        .. code-block:: python</span>
 
-<span class="sd">            from graph_datasets import evaluate_embed_file</span>
+<span class="sd">            from graph_datasets import evaluate_from_embed_file</span>
 <span class="sd">            from graph_datasets import save_to_csv_files</span>
 
 <span class="sd">            method_name=&#39;orderedgnn&#39;</span>
 <span class="sd">            data_name=&#39;texas&#39;</span>
 
-<span class="sd">            clustering_res, classification_res = evaluate_embed_file(</span>
+<span class="sd">            clustering_res, classification_res = evaluate_from_embed_file(</span>
 <span class="sd">                f&#39;{data_name}_{method_name}_embeds.pth&#39;,</span>
 <span class="sd">                f&#39;{data_name}_data.pth&#39;,</span>
 <span class="sd">                save_path=&#39;./save/&#39;,</span>

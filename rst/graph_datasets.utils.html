@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>utils &mdash; Graph Datasets 0.4.0 documentation</title>
+  <title>evaluation &mdash; Graph Datasets 0.5.0 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
@@ -48,7 +48,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Datasets</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="table.html">statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="table.html">dataset cheatsheet</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Loaders</span></p>
 <ul>
@@ -67,37 +67,33 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Utils</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">utils</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#module-graph_datasets.utils.evaluation.evaluation">evaluation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#graph_datasets.utils.evaluation.evaluation.evaluate_from_embed_file"><code class="docutils literal notranslate"><span class="pre">evaluate_from_embed_file()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#graph_datasets.utils.evaluation.evaluation.save_to_csv_files"><code class="docutils literal notranslate"><span class="pre">save_to_csv_files()</span></code></a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">evaluation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#graph_datasets.utils.evaluation.evaluation.evaluate_from_embed_file"><code class="docutils literal notranslate"><span class="pre">evaluate_from_embed_file()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#module-graph_datasets.utils.statistics">statistics</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#graph_datasets.utils.statistics.node_homo"><code class="docutils literal notranslate"><span class="pre">node_homo()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#graph_datasets.utils.statistics.edge_homo"><code class="docutils literal notranslate"><span class="pre">edge_homo()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#graph_datasets.utils.statistics.statistics"><code class="docutils literal notranslate"><span class="pre">statistics()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="#module-graph_datasets.utils.statistics">statistics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#graph_datasets.utils.statistics.node_homo"><code class="docutils literal notranslate"><span class="pre">node_homo()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#graph_datasets.utils.statistics.edge_homo"><code class="docutils literal notranslate"><span class="pre">edge_homo()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#graph_datasets.utils.statistics.statistics"><code class="docutils literal notranslate"><span class="pre">statistics()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#module-graph_datasets.utils.model_management">model management</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#graph_datasets.utils.model_management.save_model"><code class="docutils literal notranslate"><span class="pre">save_model()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#graph_datasets.utils.model_management.load_model"><code class="docutils literal notranslate"><span class="pre">load_model()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#graph_datasets.utils.model_management.set_seed"><code class="docutils literal notranslate"><span class="pre">set_seed()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#graph_datasets.utils.model_management.set_device"><code class="docutils literal notranslate"><span class="pre">set_device()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="#module-graph_datasets.utils.model_management">model management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#graph_datasets.utils.model_management.save_model"><code class="docutils literal notranslate"><span class="pre">save_model()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#graph_datasets.utils.model_management.load_model"><code class="docutils literal notranslate"><span class="pre">load_model()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#graph_datasets.utils.model_management.set_seed"><code class="docutils literal notranslate"><span class="pre">set_seed()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#graph_datasets.utils.model_management.set_device"><code class="docutils literal notranslate"><span class="pre">set_device()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#module-graph_datasets.utils.output">output</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#graph_datasets.utils.output.make_parent_dirs"><code class="docutils literal notranslate"><span class="pre">make_parent_dirs()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#graph_datasets.utils.output.refresh_file"><code class="docutils literal notranslate"><span class="pre">refresh_file()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#graph_datasets.utils.output.csv2file"><code class="docutils literal notranslate"><span class="pre">csv2file()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="#module-graph_datasets.utils.output">output</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#graph_datasets.utils.output.make_parent_dirs"><code class="docutils literal notranslate"><span class="pre">make_parent_dirs()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#graph_datasets.utils.output.refresh_file"><code class="docutils literal notranslate"><span class="pre">refresh_file()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#graph_datasets.utils.output.csv2file"><code class="docutils literal notranslate"><span class="pre">csv2file()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#module-graph_datasets.utils.common">common</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#graph_datasets.utils.common.get_str_time"><code class="docutils literal notranslate"><span class="pre">get_str_time()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#graph_datasets.utils.common.tab_printer"><code class="docutils literal notranslate"><span class="pre">tab_printer()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#graph_datasets.utils.common.download_from_google_drive"><code class="docutils literal notranslate"><span class="pre">download_from_google_drive()</span></code></a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="#module-graph_datasets.utils.common">common</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#graph_datasets.utils.common.get_str_time"><code class="docutils literal notranslate"><span class="pre">get_str_time()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#graph_datasets.utils.common.tab_printer"><code class="docutils literal notranslate"><span class="pre">tab_printer()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#graph_datasets.utils.common.download_from_google_drive"><code class="docutils literal notranslate"><span class="pre">download_from_google_drive()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -116,7 +112,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">utils</li>
+      <li class="breadcrumb-item active">evaluation</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/rst/graph_datasets.utils.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -126,10 +122,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="utils">
-<h1>utils<a class="headerlink" href="#utils" title="Permalink to this heading"></a></h1>
-<section id="module-graph_datasets.utils.evaluation.evaluation">
-<span id="evaluation"></span><h2>evaluation<a class="headerlink" href="#module-graph_datasets.utils.evaluation.evaluation" title="Permalink to this heading"></a></h2>
+  <section id="module-graph_datasets.utils.evaluation.evaluation">
+<span id="evaluation"></span><h1>evaluation<a class="headerlink" href="#module-graph_datasets.utils.evaluation.evaluation" title="Permalink to this heading"></a></h1>
 <p>Evaluation utils for graph tasks.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="graph_datasets.utils.evaluation.evaluation.evaluate_from_embed_file">
@@ -152,57 +146,23 @@
 </dd>
 </dl>
 <p class="rubric">Example</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graph_datasets</span> <span class="kn">import</span> <span class="n">evaluate_embed_file</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graph_datasets</span> <span class="kn">import</span> <span class="n">evaluate_from_embed_file</span>
 
 <span class="n">method_name</span><span class="o">=</span><span class="s1">&#39;orderedgnn&#39;</span>
 <span class="n">data_name</span><span class="o">=</span><span class="s1">&#39;texas&#39;</span>
 
-<span class="n">clustering_res</span><span class="p">,</span> <span class="n">classification_res</span> <span class="o">=</span> <span class="n">evaluate_embed_file</span><span class="p">(</span>
+<span class="n">clustering_res</span><span class="p">,</span> <span class="n">classification_res</span> <span class="o">=</span> <span class="n">evaluate_from_embed_file</span><span class="p">(</span>
     <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">data_name</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">method_name</span><span class="si">}</span><span class="s1">_embeds.pth&#39;</span><span class="p">,</span>
     <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">data_name</span><span class="si">}</span><span class="s1">_data.pth&#39;</span><span class="p">,</span>
     <span class="n">save_path</span><span class="o">=</span><span class="s1">&#39;./save/&#39;</span><span class="p">,</span>
 <span class="p">)</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="graph_datasets.utils.evaluation.evaluation.save_to_csv_files">
-<span class="sig-prename descclassname"><span class="pre">graph_datasets.utils.evaluation.evaluation.</span></span><span class="sig-name descname"><span class="pre">save_to_csv_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">csv_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./results'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/graph_datasets/utils/evaluation/evaluation.html#save_to_csv_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#graph_datasets.utils.evaluation.evaluation.save_to_csv_files" title="Permalink to this definition"></a></dt>
-<dd><p>Save the evaluation results to a local csv file.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>results</strong> (<em>dict</em>) – Evaluation results document.</p></li>
-<li><p><strong>add_info</strong> (<em>dict</em>) – Additional information, such as data set name, method name.</p></li>
-<li><p><strong>csv_name</strong> (<em>str</em>) – csv file name to store.</p></li>
-<li><p><strong>save_path</strong> (<em>str</em><em>, </em><em>optional</em>) – Folder path to store. Defaults to ‘./results’.</p></li>
-</ul>
-</dd>
-</dl>
-<p class="rubric">Example</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graph_datasets</span> <span class="kn">import</span> <span class="n">evaluate_embed_file</span>
-<span class="kn">from</span> <span class="nn">graph_datasets</span> <span class="kn">import</span> <span class="n">save_to_csv_files</span>
-
-<span class="n">method_name</span><span class="o">=</span><span class="s1">&#39;orderedgnn&#39;</span>
-<span class="n">data_name</span><span class="o">=</span><span class="s1">&#39;texas&#39;</span>
-
-<span class="n">clustering_res</span><span class="p">,</span> <span class="n">classification_res</span> <span class="o">=</span> <span class="n">evaluate_embed_file</span><span class="p">(</span>
-    <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">data_name</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">method_name</span><span class="si">}</span><span class="s1">_embeds.pth&#39;</span><span class="p">,</span>
-    <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">data_name</span><span class="si">}</span><span class="s1">_data.pth&#39;</span><span class="p">,</span>
-    <span class="n">save_path</span><span class="o">=</span><span class="s1">&#39;./save/&#39;</span><span class="p">,</span>
-<span class="p">)</span>
-
-<span class="n">add_info</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="n">data_name</span><span class="p">,</span> <span class="s1">&#39;method&#39;</span><span class="p">:</span> <span class="n">method_name</span><span class="p">,}</span>
-<span class="n">save_to_csv_files</span><span class="p">(</span><span class="n">clustering_res</span><span class="p">,</span> <span class="n">add_info</span><span class="p">,</span> <span class="s1">&#39;clutering.csv&#39;</span><span class="p">)</span>
-<span class="n">save_to_csv_files</span><span class="p">(</span><span class="n">classification_res</span><span class="p">,</span> <span class="n">add_info</span><span class="p">,</span> <span class="s1">&#39;classification.csv&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
 
 </section>
 <section id="module-graph_datasets.utils.statistics">
-<span id="statistics"></span><h2>statistics<a class="headerlink" href="#module-graph_datasets.utils.statistics" title="Permalink to this heading"></a></h2>
+<span id="statistics"></span><h1>statistics<a class="headerlink" href="#module-graph_datasets.utils.statistics" title="Permalink to this heading"></a></h1>
 <p>Graph information statistics.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="graph_datasets.utils.statistics.node_homo">
@@ -272,7 +232,7 @@
 
 </section>
 <section id="module-graph_datasets.utils.model_management">
-<span id="model-management"></span><h2>model management<a class="headerlink" href="#module-graph_datasets.utils.model_management" title="Permalink to this heading"></a></h2>
+<span id="model-management"></span><h1>model management<a class="headerlink" href="#module-graph_datasets.utils.model_management" title="Permalink to this heading"></a></h1>
 <p>Model Management.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="graph_datasets.utils.model_management.save_model">
@@ -354,7 +314,7 @@
 
 </section>
 <section id="module-graph_datasets.utils.output">
-<span id="output"></span><h2>output<a class="headerlink" href="#module-graph_datasets.utils.output" title="Permalink to this heading"></a></h2>
+<span id="output"></span><h1>output<a class="headerlink" href="#module-graph_datasets.utils.output" title="Permalink to this heading"></a></h1>
 <p>Output Management.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="graph_datasets.utils.output.make_parent_dirs">
@@ -431,7 +391,7 @@
 
 </section>
 <section id="module-graph_datasets.utils.common">
-<span id="common"></span><h2>common<a class="headerlink" href="#module-graph_datasets.utils.common" title="Permalink to this heading"></a></h2>
+<span id="common"></span><h1>common<a class="headerlink" href="#module-graph_datasets.utils.common" title="Permalink to this heading"></a></h1>
 <p>Common utils.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="graph_datasets.utils.common.get_str_time">
@@ -479,7 +439,6 @@
 </dl>
 </dd></dl>
 
-</section>
 </section>
 
 
