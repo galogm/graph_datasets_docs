@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>graph_datasets.utils.evaluation package &mdash; Graph Datasets 0.4.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Graph Datasets
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Datasets</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../rst/table.html">statistics</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Loaders</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../rst/load_data.html">load_data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/graph_datasets.datasets.html">DGL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/graph_datasets.datasets.html#module-graph_datasets.datasets.pyg">PyG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/graph_datasets.datasets.html#module-graph_datasets.datasets.ogb">OGB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/graph_datasets.datasets.html#module-graph_datasets.datasets.linkx">LINKX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/graph_datasets.datasets.html#module-graph_datasets.datasets.critical">CRITICAL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/graph_datasets.datasets.html#module-graph_datasets.datasets.cola">CoLA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/graph_datasets.datasets.html#module-graph_datasets.datasets.sdcn">SDCN</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Sources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../rst/data_info.html">data_info</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Utils</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../rst/graph_datasets.utils.html">utils</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Graph Datasets</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">graph_datasets.utils.evaluation package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/tmp/graph_datasets.utils.evaluation.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="graph-datasets-utils-evaluation-package">
+<h1>graph_datasets.utils.evaluation package<a class="headerlink" href="#graph-datasets-utils-evaluation-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-graph_datasets.utils.evaluation.eval_tools">
+<span id="graph-datasets-utils-evaluation-eval-tools-module"></span><h2>graph_datasets.utils.evaluation.eval_tools module<a class="headerlink" href="#module-graph_datasets.utils.evaluation.eval_tools" title="Permalink to this heading"></a></h2>
+<p>Utils for evaluation.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="graph_datasets.utils.evaluation.eval_tools.load_dict">
+<span class="sig-prename descclassname"><span class="pre">graph_datasets.utils.evaluation.eval_tools.</span></span><span class="sig-name descname"><span class="pre">load_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename_</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/graph_datasets/utils/evaluation/eval_tools.html#load_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#graph_datasets.utils.evaluation.eval_tools.load_dict" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="graph_datasets.utils.evaluation.eval_tools.save_dict">
+<span class="sig-prename descclassname"><span class="pre">graph_datasets.utils.evaluation.eval_tools.</span></span><span class="sig-name descname"><span class="pre">save_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">di_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename_</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/graph_datasets/utils/evaluation/eval_tools.html#save_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#graph_datasets.utils.evaluation.eval_tools.save_dict" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="graph_datasets.utils.evaluation.eval_tools.split_train_test_nodes">
+<span class="sig-prename descclassname"><span class="pre">graph_datasets.utils.evaluation.eval_tools.</span></span><span class="sig-name descname"><span class="pre">split_train_test_nodes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_ratio</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valid_ratio</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">split_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fixed_split</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/graph_datasets/utils/evaluation/eval_tools.html#split_train_test_nodes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#graph_datasets.utils.evaluation.eval_tools.split_train_test_nodes" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="graph_datasets.utils.evaluation.eval_tools.cluster_eval">
+<span class="sig-prename descclassname"><span class="pre">graph_datasets.utils.evaluation.eval_tools.</span></span><span class="sig-name descname"><span class="pre">cluster_eval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/graph_datasets/utils/evaluation/eval_tools.html#cluster_eval"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#graph_datasets.utils.evaluation.eval_tools.cluster_eval" title="Permalink to this definition"></a></dt>
+<dd><p>code source: <a class="reference external" href="https://github.com/bdy9527/SDCN">https://github.com/bdy9527/SDCN</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="graph_datasets.utils.evaluation.eval_tools.unsup_eval">
+<span class="sig-prename descclassname"><span class="pre">graph_datasets.utils.evaluation.eval_tools.</span></span><span class="sig-name descname"><span class="pre">unsup_eval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/graph_datasets/utils/evaluation/eval_tools.html#unsup_eval"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#graph_datasets.utils.evaluation.eval_tools.unsup_eval" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="graph_datasets.utils.evaluation.eval_tools.kmeans_test">
+<span class="sig-prename descclassname"><span class="pre">graph_datasets.utils.evaluation.eval_tools.</span></span><span class="sig-name descname"><span class="pre">kmeans_test</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_clusters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repeat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quiet</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/graph_datasets/utils/evaluation/eval_tools.html#kmeans_test"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#graph_datasets.utils.evaluation.eval_tools.kmeans_test" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="graph_datasets.utils.evaluation.eval_tools.svm_test">
+<span class="sig-prename descclassname"><span class="pre">graph_datasets.utils.evaluation.eval_tools.</span></span><span class="sig-name descname"><span class="pre">svm_test</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embeddings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_ratios</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(10,</span> <span class="pre">20,</span> <span class="pre">30,</span> <span class="pre">40)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repeat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/graph_datasets/utils/evaluation/eval_tools.html#svm_test"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#graph_datasets.utils.evaluation.eval_tools.svm_test" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="graph_datasets.utils.evaluation.eval_tools.evaluate_results_nc">
+<span class="sig-prename descclassname"><span class="pre">graph_datasets.utils.evaluation.eval_tools.</span></span><span class="sig-name descname"><span class="pre">evaluate_results_nc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embeddings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quiet</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'unsup'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/graph_datasets/utils/evaluation/eval_tools.html#evaluate_results_nc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#graph_datasets.utils.evaluation.eval_tools.evaluate_results_nc" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-graph_datasets.utils.evaluation.evaluation">
+<span id="graph-datasets-utils-evaluation-evaluation-module"></span><h2>graph_datasets.utils.evaluation.evaluation module<a class="headerlink" href="#module-graph_datasets.utils.evaluation.evaluation" title="Permalink to this heading"></a></h2>
+<p>Evaluation utils for graph tasks.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="graph_datasets.utils.evaluation.evaluation.load_from_file">
+<span class="sig-prename descclassname"><span class="pre">graph_datasets.utils.evaluation.evaluation.</span></span><span class="sig-name descname"><span class="pre">load_from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/graph_datasets/utils/evaluation/evaluation.html#load_from_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#graph_datasets.utils.evaluation.evaluation.load_from_file" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="graph_datasets.utils.evaluation.evaluation.evaluate_from_embed_file">
+<span class="sig-prename descclassname"><span class="pre">graph_datasets.utils.evaluation.evaluation.</span></span><span class="sig-name descname"><span class="pre">evaluate_from_embed_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">embedding_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./tmp/'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quiet</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/graph_datasets/utils/evaluation/evaluation.html#evaluate_from_embed_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#graph_datasets.utils.evaluation.evaluation.evaluate_from_embed_file" title="Permalink to this definition"></a></dt>
+<dd><p>Evaluation of representation quality using clustering and classification tasks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>embedding_file</strong> (<em>str</em>) – Embedded file name.</p></li>
+<li><p><strong>data_file</strong> (<em>str</em>) – Data file name.</p></li>
+<li><p><strong>save_path</strong> (<em>str</em><em>, </em><em>optional</em>) – Folder path to store. Defaults to ‘./tmp/’.</p></li>
+<li><p><strong>quiet</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to print results. Defaults to True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Two dicts are included,             which are the evaluation results of clustering and classification.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple[Dict, Dict]</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graph_datasets</span> <span class="kn">import</span> <span class="n">evaluate_embed_file</span>
+
+<span class="n">method_name</span><span class="o">=</span><span class="s1">&#39;orderedgnn&#39;</span>
+<span class="n">data_name</span><span class="o">=</span><span class="s1">&#39;texas&#39;</span>
+
+<span class="n">clustering_res</span><span class="p">,</span> <span class="n">classification_res</span> <span class="o">=</span> <span class="n">evaluate_embed_file</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">data_name</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">method_name</span><span class="si">}</span><span class="s1">_embeds.pth&#39;</span><span class="p">,</span>
+    <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">data_name</span><span class="si">}</span><span class="s1">_data.pth&#39;</span><span class="p">,</span>
+    <span class="n">save_path</span><span class="o">=</span><span class="s1">&#39;./save/&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="graph_datasets.utils.evaluation.evaluation.save_to_csv_files">
+<span class="sig-prename descclassname"><span class="pre">graph_datasets.utils.evaluation.evaluation.</span></span><span class="sig-name descname"><span class="pre">save_to_csv_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">csv_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./results'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/graph_datasets/utils/evaluation/evaluation.html#save_to_csv_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#graph_datasets.utils.evaluation.evaluation.save_to_csv_files" title="Permalink to this definition"></a></dt>
+<dd><p>Save the evaluation results to a local csv file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>results</strong> (<em>dict</em>) – Evaluation results document.</p></li>
+<li><p><strong>add_info</strong> (<em>dict</em>) – Additional information, such as data set name, method name.</p></li>
+<li><p><strong>csv_name</strong> (<em>str</em>) – csv file name to store.</p></li>
+<li><p><strong>save_path</strong> (<em>str</em><em>, </em><em>optional</em>) – Folder path to store. Defaults to ‘./results’.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graph_datasets</span> <span class="kn">import</span> <span class="n">evaluate_embed_file</span>
+<span class="kn">from</span> <span class="nn">graph_datasets</span> <span class="kn">import</span> <span class="n">save_to_csv_files</span>
+
+<span class="n">method_name</span><span class="o">=</span><span class="s1">&#39;orderedgnn&#39;</span>
+<span class="n">data_name</span><span class="o">=</span><span class="s1">&#39;texas&#39;</span>
+
+<span class="n">clustering_res</span><span class="p">,</span> <span class="n">classification_res</span> <span class="o">=</span> <span class="n">evaluate_embed_file</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">data_name</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">method_name</span><span class="si">}</span><span class="s1">_embeds.pth&#39;</span><span class="p">,</span>
+    <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">data_name</span><span class="si">}</span><span class="s1">_data.pth&#39;</span><span class="p">,</span>
+    <span class="n">save_path</span><span class="o">=</span><span class="s1">&#39;./save/&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">add_info</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="n">data_name</span><span class="p">,</span> <span class="s1">&#39;method&#39;</span><span class="p">:</span> <span class="n">method_name</span><span class="p">,}</span>
+<span class="n">save_to_csv_files</span><span class="p">(</span><span class="n">clustering_res</span><span class="p">,</span> <span class="n">add_info</span><span class="p">,</span> <span class="s1">&#39;clutering.csv&#39;</span><span class="p">)</span>
+<span class="n">save_to_csv_files</span><span class="p">(</span><span class="n">classification_res</span><span class="p">,</span> <span class="n">add_info</span><span class="p">,</span> <span class="s1">&#39;classification.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="module-graph_datasets.utils.evaluation">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-graph_datasets.utils.evaluation" title="Permalink to this heading"></a></h2>
+<p>Evalutaion</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Galo.gm.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

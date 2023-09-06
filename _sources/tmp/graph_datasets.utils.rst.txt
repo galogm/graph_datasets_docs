@@ -1,8 +1,24 @@
 graph\_datasets.utils package
 =============================
 
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   graph_datasets.utils.evaluation
+
 Submodules
 ----------
+
+graph\_datasets.utils.common module
+-----------------------------------
+
+.. automodule:: graph_datasets.utils.common
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
 graph\_datasets.utils.model\_management module
 ----------------------------------------------

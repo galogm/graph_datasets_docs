@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>graph_datasets.utils.evaluation.evaluation &mdash; Graph Datasets 0.4.0 documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../_static/copybutton.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            Graph Datasets
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Datasets</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../rst/table.html">statistics</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Loaders</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../rst/load_data.html">load_data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../rst/graph_datasets.datasets.html">DGL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../rst/graph_datasets.datasets.html#module-graph_datasets.datasets.pyg">PyG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../rst/graph_datasets.datasets.html#module-graph_datasets.datasets.ogb">OGB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../rst/graph_datasets.datasets.html#module-graph_datasets.datasets.linkx">LINKX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../rst/graph_datasets.datasets.html#module-graph_datasets.datasets.critical">CRITICAL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../rst/graph_datasets.datasets.html#module-graph_datasets.datasets.cola">CoLA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../rst/graph_datasets.datasets.html#module-graph_datasets.datasets.sdcn">SDCN</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Sources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../rst/data_info.html">data_info</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Utils</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../rst/graph_datasets.utils.html">utils</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Graph Datasets</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">graph_datasets.utils.evaluation.evaluation</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for graph_datasets.utils.evaluation.evaluation</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Evaluation utils for graph tasks.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="c1"># pylint: disable=invalid-name,too-many-locals</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Tuple</span>
+
+<span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="kn">from</span> <span class="nn">..output</span> <span class="kn">import</span> <span class="n">csv2file</span>
+<span class="kn">from</span> <span class="nn">.eval_tools</span> <span class="kn">import</span> <span class="n">evaluate_results_nc</span>
+
+
+<div class="viewcode-block" id="load_from_file"><a class="viewcode-back" href="../../../../tmp/graph_datasets.utils.evaluation.html#graph_datasets.utils.evaluation.evaluation.load_from_file">[docs]</a><span class="k">def</span> <span class="nf">load_from_file</span><span class="p">(</span><span class="n">file_name</span><span class="p">):</span>
+    <span class="c1"># Load the embeddings from the .pth file</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">embeddings</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">FileNotFoundError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;File &#39;</span><span class="si">{</span><span class="n">file_name</span><span class="si">}</span><span class="s2">&#39; not found.&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">exc</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">el</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error occurred while loading *.pth from &#39;</span><span class="si">{</span><span class="n">file_name</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">el</span>
+
+    <span class="k">return</span> <span class="n">embeddings</span></div>
+
+
+<div class="viewcode-block" id="evaluate_from_embed_file"><a class="viewcode-back" href="../../../../tmp/graph_datasets.utils.evaluation.html#graph_datasets.utils.evaluation.evaluation.evaluate_from_embed_file">[docs]</a><span class="k">def</span> <span class="nf">evaluate_from_embed_file</span><span class="p">(</span>
+    <span class="n">embedding_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">data_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">save_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;./tmp/&quot;</span><span class="p">,</span>
+    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Dict</span><span class="p">,</span> <span class="n">Dict</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Evaluation of representation quality using clustering and classification tasks.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        embedding_file (str): Embedded file name.</span>
+<span class="sd">        data_file (str): Data file name.</span>
+<span class="sd">        save_path (str, optional): Folder path to store. Defaults to &#39;./tmp/&#39;.</span>
+<span class="sd">        quiet (bool, optional): Whether to print results. Defaults to True.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Tuple[Dict, Dict]: Two dicts are included, \</span>
+<span class="sd">            which are the evaluation results of clustering and classification.</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            from graph_datasets import evaluate_embed_file</span>
+
+<span class="sd">            method_name=&#39;orderedgnn&#39;</span>
+<span class="sd">            data_name=&#39;texas&#39;</span>
+
+<span class="sd">            clustering_res, classification_res = evaluate_embed_file(</span>
+<span class="sd">                f&#39;{data_name}_{method_name}_embeds.pth&#39;,</span>
+<span class="sd">                f&#39;{data_name}_data.pth&#39;,</span>
+<span class="sd">                save_path=&#39;./save/&#39;,</span>
+<span class="sd">            )</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">embedding_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">save_path</span><span class="p">,</span> <span class="n">embedding_file</span><span class="p">)</span>
+    <span class="n">data_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">save_path</span><span class="p">,</span> <span class="n">data_file</span><span class="p">)</span>
+
+    <span class="n">embeddings</span> <span class="o">=</span> <span class="n">load_from_file</span><span class="p">(</span><span class="n">embedding_file</span><span class="p">)</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">load_from_file</span><span class="p">(</span><span class="n">data_file</span><span class="p">)</span>
+
+    <span class="c1"># Call the evaluate_results_nc function with the loaded embeddings</span>
+    <span class="p">(</span>
+        <span class="n">svm_macro_f1_list</span><span class="p">,</span>
+        <span class="n">svm_micro_f1_list</span><span class="p">,</span>
+        <span class="n">acc_mean</span><span class="p">,</span>
+        <span class="n">acc_std</span><span class="p">,</span>
+        <span class="n">nmi_mean</span><span class="p">,</span>
+        <span class="n">nmi_std</span><span class="p">,</span>
+        <span class="n">ami_mean</span><span class="p">,</span>
+        <span class="n">ami_std</span><span class="p">,</span>
+        <span class="n">ari_mean</span><span class="p">,</span>
+        <span class="n">ari_std</span><span class="p">,</span>
+        <span class="n">f1_mean</span><span class="p">,</span>
+        <span class="n">f1_std</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">=</span> <span class="n">evaluate_results_nc</span><span class="p">(</span>
+        <span class="n">data</span><span class="p">,</span>
+        <span class="n">embeddings</span><span class="p">,</span>
+        <span class="n">quiet</span><span class="o">=</span><span class="n">quiet</span><span class="p">,</span>
+        <span class="n">method</span><span class="o">=</span><span class="s2">&quot;both&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Format the output as desired</span>
+    <span class="n">clustering_results</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;ACC&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">acc_mean</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">±</span><span class="si">{</span><span class="n">acc_std</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;NMI&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">nmi_mean</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">±</span><span class="si">{</span><span class="n">nmi_std</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;AMI&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ami_mean</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">±</span><span class="si">{</span><span class="n">ami_std</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ARI&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ari_mean</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">±</span><span class="si">{</span><span class="n">ari_std</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Macro F1&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">f1_mean</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">±</span><span class="si">{</span><span class="n">f1_std</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="n">svm_macro_f1_list</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">±</span><span class="si">{</span><span class="n">res</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">svm_macro_f1_list</span><span class="p">]</span>
+    <span class="n">svm_micro_f1_list</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">±</span><span class="si">{</span><span class="n">res</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">svm_micro_f1_list</span><span class="p">]</span>
+
+    <span class="n">classification_results</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">percent</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="s2">&quot;10%&quot;</span><span class="p">,</span> <span class="s2">&quot;20%&quot;</span><span class="p">,</span> <span class="s2">&quot;30%&quot;</span><span class="p">,</span> <span class="s2">&quot;40%&quot;</span><span class="p">]):</span>
+        <span class="n">classification_results</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">percent</span><span class="si">}</span><span class="s2">_Macro-F1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">svm_macro_f1_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">classification_results</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">percent</span><span class="si">}</span><span class="s2">_Micro-F1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">svm_micro_f1_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">clustering_results</span><span class="p">,</span> <span class="n">classification_results</span></div>
+
+
+<div class="viewcode-block" id="save_to_csv_files"><a class="viewcode-back" href="../../../../tmp/graph_datasets.utils.evaluation.html#graph_datasets.utils.evaluation.evaluation.save_to_csv_files">[docs]</a><span class="k">def</span> <span class="nf">save_to_csv_files</span><span class="p">(</span>
+    <span class="n">results</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span>
+    <span class="n">add_info</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span>
+    <span class="n">csv_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">save_path</span><span class="o">=</span><span class="s2">&quot;./results&quot;</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Save the evaluation results to a local csv file.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        results (dict): Evaluation results document.</span>
+<span class="sd">        add_info (dict): Additional information, such as data set name, method name.</span>
+<span class="sd">        csv_name (str): csv file name to store.</span>
+<span class="sd">        save_path (str, optional): Folder path to store. Defaults to &#39;./results&#39;.</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            from graph_datasets import evaluate_embed_file</span>
+<span class="sd">            from graph_datasets import save_to_csv_files</span>
+
+<span class="sd">            method_name=&#39;orderedgnn&#39;</span>
+<span class="sd">            data_name=&#39;texas&#39;</span>
+
+<span class="sd">            clustering_res, classification_res = evaluate_embed_file(</span>
+<span class="sd">                f&#39;{data_name}_{method_name}_embeds.pth&#39;,</span>
+<span class="sd">                f&#39;{data_name}_data.pth&#39;,</span>
+<span class="sd">                save_path=&#39;./save/&#39;,</span>
+<span class="sd">            )</span>
+
+<span class="sd">            add_info = {&#39;data&#39;: data_name, &#39;method&#39;: method_name,}</span>
+<span class="sd">            save_to_csv_files(clustering_res, add_info, &#39;clutering.csv&#39;)</span>
+<span class="sd">            save_to_csv_files(classification_res, add_info, &#39;classification.csv&#39;)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># save to csv file</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">add_info</span><span class="p">)</span>
+
+    <span class="c1"># list of values</span>
+    <span class="n">csv2file</span><span class="p">(</span>
+        <span class="n">target_path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">save_path</span><span class="p">,</span> <span class="n">csv_name</span><span class="p">),</span>
+        <span class="n">thead</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span>
+        <span class="n">tbody</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span>
+        <span class="n">refresh</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">is_dict</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<span class="c1"># if __name__ == &quot;__main__&quot;:</span>
+<span class="c1">#     method_name = &#39;orderedgnn&#39;  # &#39;selene&#39; &#39;greet&#39; &#39;hgrl&#39; &#39;nwr-gae&#39; &#39;orderedgnn&#39;</span>
+<span class="c1">#     data_name = &#39;texas&#39;  # &#39;actor&#39; &#39;chameleon&#39; &#39;cornell&#39; &#39;squirrel&#39; &#39;texas&#39; &#39;wisconsin&#39;</span>
+<span class="c1">#     print(method_name, data_name)</span>
+
+<span class="c1">#     clu_res, cls_res = evaluate_from_embed_file(</span>
+<span class="c1">#         f&#39;{data_name}_{method_name}_embeds.pth&#39;,</span>
+<span class="c1">#         f&#39;{data_name}_data.pth&#39;,</span>
+<span class="c1">#         save_path=&#39;/data/gnn/heter/save/&#39;,</span>
+<span class="c1">#         quiet=True,</span>
+<span class="c1">#     )</span>
+<span class="c1">#     from graph_datasets.utils import tab_printer</span>
+<span class="c1">#     tab_printer(clu_res, sort=False)</span>
+<span class="c1">#     tab_printer(cls_res, sort=False)</span>
+
+<span class="c1">#     add_info = {</span>
+<span class="c1">#         &#39;data&#39;: data_name,</span>
+<span class="c1">#         &#39;method&#39;: method_name,</span>
+<span class="c1">#     }</span>
+<span class="c1">#     save_to_csv_files(clu_res, add_info, &#39;clutering.csv&#39;)</span>
+<span class="c1">#     save_to_csv_files(cls_res, add_info, &#39;classification.csv&#39;)</span>
+
+<span class="c1">#     # for data in [&#39;squirrel&#39;, &#39;actor&#39;, &#39;cornell&#39;, &#39;texas&#39;, &#39;wisconsin&#39;, &#39;chameleon&#39;]:</span>
+<span class="c1">#     #     print(method, data)</span>
+<span class="c1">#     #     print(</span>
+<span class="c1">#     #         evaluate_from_embed_file(</span>
+<span class="c1">#     #             f&#39;/data/gnn/heter/save/{data}_{method}_embeds.pth&#39;,</span>
+<span class="c1">#     #             f&#39;/data/gnn/heter/save/{data}_data.pth&#39;,</span>
+<span class="c1">#     #         )</span>
+<span class="c1">#     #     )</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Galo.gm.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

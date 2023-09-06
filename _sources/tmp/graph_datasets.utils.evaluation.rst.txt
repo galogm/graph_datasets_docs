@@ -1,0 +1,29 @@
+graph\_datasets.utils.evaluation package
+========================================
+
+Submodules
+----------
+
+graph\_datasets.utils.evaluation.eval\_tools module
+---------------------------------------------------
+
+.. automodule:: graph_datasets.utils.evaluation.eval_tools
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+graph\_datasets.utils.evaluation.evaluation module
+--------------------------------------------------
+
+.. automodule:: graph_datasets.utils.evaluation.evaluation
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: graph_datasets.utils.evaluation
+   :members:
+   :undoc-members:
+   :show-inheritance:

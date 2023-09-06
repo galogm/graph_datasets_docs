@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>graph_datasets.utils.common &mdash; Graph Datasets 0.4.0 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Graph Datasets
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Datasets</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../rst/table.html">statistics</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Loaders</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../rst/load_data.html">load_data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../rst/graph_datasets.datasets.html">DGL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../rst/graph_datasets.datasets.html#module-graph_datasets.datasets.pyg">PyG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../rst/graph_datasets.datasets.html#module-graph_datasets.datasets.ogb">OGB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../rst/graph_datasets.datasets.html#module-graph_datasets.datasets.linkx">LINKX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../rst/graph_datasets.datasets.html#module-graph_datasets.datasets.critical">CRITICAL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../rst/graph_datasets.datasets.html#module-graph_datasets.datasets.cola">CoLA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../rst/graph_datasets.datasets.html#module-graph_datasets.datasets.sdcn">SDCN</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Sources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../rst/data_info.html">data_info</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Utils</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../rst/graph_datasets.utils.html">utils</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Graph Datasets</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">graph_datasets.utils.common</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for graph_datasets.utils.common</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Common utils.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+
+<span class="kn">import</span> <span class="nn">gdown</span>
+<span class="kn">from</span> <span class="nn">texttable</span> <span class="kn">import</span> <span class="n">Texttable</span>
+
+
+<div class="viewcode-block" id="get_str_time"><a class="viewcode-back" href="../../../tmp/graph_datasets.utils.html#graph_datasets.utils.common.get_str_time">[docs]</a><span class="k">def</span> <span class="nf">get_str_time</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return localtime in the format of &quot;%m%d%H%M%S&quot;.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%m</span><span class="si">%d</span><span class="s2">%H%M%S&quot;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">())</span></div>
+
+
+<div class="viewcode-block" id="format_value"><a class="viewcode-back" href="../../../tmp/graph_datasets.utils.html#graph_datasets.utils.common.format_value">[docs]</a><span class="k">def</span> <span class="nf">format_value</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return number as string with comma split.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        value (int): number.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: string of the number with comma split.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">isdecimal</span><span class="p">():</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">value</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">return</span> <span class="n">value</span></div>
+
+
+<div class="viewcode-block" id="tab_printer"><a class="viewcode-back" href="../../../tmp/graph_datasets.utils.html#graph_datasets.utils.common.tab_printer">[docs]</a><span class="k">def</span> <span class="nf">tab_printer</span><span class="p">(</span>
+    <span class="n">args</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span>
+    <span class="n">thead</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">cols_align</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">cols_valign</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">cols_dtype</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">sort</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Function to print the logs in a nice tabular format.</span>
+
+
+<span class="sd">    Args:</span>
+<span class="sd">        args (Dict): value dict.</span>
+<span class="sd">        thead (List[str], optional): table head. Defaults to None.</span>
+<span class="sd">        cols_align (List[str], optional): horizontal alignment of the columns. Defaults to None.</span>
+<span class="sd">        cols_valign (List[str], optional): vertical alignment of the columns. Defaults to None.</span>
+<span class="sd">        cols_dtype (List[str], optional): value types of the columns. Defaults to None.</span>
+<span class="sd">        sort (bool, optional): whether to sort the keys. Defaults to True.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: table string to print.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="nb">vars</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="s2">&quot;__dict__&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="n">args</span>
+    <span class="n">keys</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="k">if</span> <span class="n">sort</span> <span class="k">else</span> <span class="n">args</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+    <span class="n">table</span> <span class="o">=</span> <span class="n">Texttable</span><span class="p">()</span>
+    <span class="n">table</span><span class="o">.</span><span class="n">set_precision</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="p">[[]</span> <span class="k">if</span> <span class="n">thead</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">thead</span><span class="p">]</span>
+    <span class="n">params</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
+        <span class="p">[</span>
+            <span class="p">[</span>
+                <span class="n">k</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">),</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">args</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="nb">bool</span><span class="p">)</span> <span class="k">else</span> <span class="n">format_value</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="n">k</span><span class="p">]),</span>
+            <span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">keys</span>
+        <span class="p">]</span>
+    <span class="p">)</span>
+    <span class="k">if</span> <span class="n">cols_align</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">table</span><span class="o">.</span><span class="n">set_cols_align</span><span class="p">(</span><span class="n">cols_align</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">cols_valign</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">table</span><span class="o">.</span><span class="n">set_cols_valign</span><span class="p">(</span><span class="n">cols_valign</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">cols_dtype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">table</span><span class="o">.</span><span class="n">set_cols_dtype</span><span class="p">(</span><span class="n">cols_dtype</span><span class="p">)</span>
+    <span class="n">table</span><span class="o">.</span><span class="n">add_rows</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">table</span><span class="o">.</span><span class="n">draw</span><span class="p">())</span>
+
+    <span class="k">return</span> <span class="n">table</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="download_tip"><a class="viewcode-back" href="../../../tmp/graph_datasets.utils.html#graph_datasets.utils.common.download_tip">[docs]</a><span class="k">def</span> <span class="nf">download_tip</span><span class="p">(</span><span class="n">info</span><span class="p">:</span> <span class="n">Dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Tips for Downloading datasets</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        data_file (str): filepath.</span>
+<span class="sd">        url (str): url for downloading.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">info</span><span class="p">[</span><span class="s2">&quot;Tip&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;If the download fails, </span><span class="se">\</span>
+<span class="s2">use the &#39;Download URL&#39; to download manually and move the file to the &#39;Save Path&#39;.&quot;</span>
+
+    <span class="n">tab_printer</span><span class="p">(</span><span class="n">info</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="print_dataset_info"><a class="viewcode-back" href="../../../tmp/graph_datasets.utils.html#graph_datasets.utils.common.print_dataset_info">[docs]</a><span class="k">def</span> <span class="nf">print_dataset_info</span><span class="p">(</span>
+    <span class="n">dataset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">n_nodes</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">n_edges</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">n_feats</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">n_clusters</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">self_loops</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">is_directed</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">thead</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">dic</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;NumNodes&quot;</span><span class="p">:</span> <span class="n">n_nodes</span><span class="p">,</span>
+        <span class="s2">&quot;NumEdges&quot;</span><span class="p">:</span> <span class="n">n_edges</span><span class="p">,</span>
+        <span class="s2">&quot;NumFeats&quot;</span><span class="p">:</span> <span class="n">n_feats</span><span class="p">,</span>
+        <span class="s2">&quot;NumClasses&quot;</span><span class="p">:</span> <span class="n">n_clusters</span><span class="p">,</span>
+        <span class="s2">&quot;Self-loops&quot;</span><span class="p">:</span> <span class="n">self_loops</span><span class="p">,</span>
+        <span class="s2">&quot;Directed&quot;</span><span class="p">:</span> <span class="n">is_directed</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="n">self_loops</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">dic</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;Self-loops&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">is_directed</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">dic</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;Directed&quot;</span><span class="p">)</span>
+
+    <span class="n">tab_printer</span><span class="p">(</span>
+        <span class="n">dic</span><span class="p">,</span>
+        <span class="n">thead</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Dataset&quot;</span><span class="p">,</span> <span class="n">dataset_name</span><span class="p">]</span> <span class="k">if</span> <span class="n">thead</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">thead</span><span class="p">,</span>
+        <span class="n">cols_align</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">],</span>
+        <span class="n">sort</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="bar_progress"><a class="viewcode-back" href="../../../tmp/graph_datasets.utils.html#graph_datasets.utils.common.bar_progress">[docs]</a><span class="k">def</span> <span class="nf">bar_progress</span><span class="p">(</span><span class="n">current</span><span class="p">,</span> <span class="n">total</span><span class="p">,</span> <span class="n">_</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;create this bar_progress method which is invoked automatically from wget&quot;&quot;&quot;</span>
+    <span class="n">progress_message</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Downloading: </span><span class="si">{</span><span class="n">current</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">}</span><span class="s2">% [</span><span class="si">{</span><span class="n">current</span><span class="si">}</span><span class="s2"> / </span><span class="si">{</span><span class="n">total</span><span class="si">}</span><span class="s2">] bytes&quot;</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\r</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">progress_message</span><span class="p">)</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="download_from_google_drive"><a class="viewcode-back" href="../../../tmp/graph_datasets.utils.html#graph_datasets.utils.common.download_from_google_drive">[docs]</a><span class="k">def</span> <span class="nf">download_from_google_drive</span><span class="p">(</span>
+    <span class="n">gid</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">output</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">file_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Download data from google drive.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        id (str): Id for google drive url.</span>
+<span class="sd">        output (str): Path to save data.</span>
+<span class="sd">        quiet (bool): Suppress terminal output. Default is False.</span>
+<span class="sd">        file_name (str): File name. Default to None.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">quiet</span><span class="p">:</span>
+        <span class="n">info</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;File&quot;</span><span class="p">:</span> <span class="n">file_name</span> <span class="k">if</span> <span class="n">file_name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">output</span><span class="p">),</span>
+            <span class="s2">&quot;Drive ID&quot;</span><span class="p">:</span> <span class="n">gid</span><span class="p">,</span>
+            <span class="s2">&quot;Download URL&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;https://drive.google.com/uc?id=</span><span class="si">{</span><span class="n">gid</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Save Path&quot;</span><span class="p">:</span> <span class="n">output</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="n">download_tip</span><span class="p">(</span><span class="n">info</span><span class="p">)</span>
+
+    <span class="n">gdown</span><span class="o">.</span><span class="n">download</span><span class="p">(</span>
+        <span class="nb">id</span><span class="o">=</span><span class="n">gid</span><span class="p">,</span>
+        <span class="n">output</span><span class="o">=</span><span class="n">output</span><span class="p">,</span>
+        <span class="n">quiet</span><span class="o">=</span><span class="n">quiet</span><span class="p">,</span>
+    <span class="p">)</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Galo.gm.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
