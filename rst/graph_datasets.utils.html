@@ -88,6 +88,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#graph_datasets.utils.output.make_parent_dirs"><code class="docutils literal notranslate"><span class="pre">make_parent_dirs()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#graph_datasets.utils.output.refresh_file"><code class="docutils literal notranslate"><span class="pre">refresh_file()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#graph_datasets.utils.output.csv2file"><code class="docutils literal notranslate"><span class="pre">csv2file()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#graph_datasets.utils.output.save_to_csv_files"><code class="docutils literal notranslate"><span class="pre">save_to_csv_files()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#module-graph_datasets.utils.common">common</a><ul>
@@ -385,6 +386,40 @@
     <span class="p">],</span>
     <span class="n">is_dict</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="graph_datasets.utils.output.save_to_csv_files">
+<span class="sig-prename descclassname"><span class="pre">graph_datasets.utils.output.</span></span><span class="sig-name descname"><span class="pre">save_to_csv_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">csv_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./results'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/graph_datasets/utils/output.html#save_to_csv_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#graph_datasets.utils.output.save_to_csv_files" title="Permalink to this definition"></a></dt>
+<dd><p>Save the evaluation results to a local csv file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>results</strong> (<em>dict</em>) – Evaluation results document.</p></li>
+<li><p><strong>add_info</strong> (<em>dict</em>) – Additional information, such as data set name, method name.</p></li>
+<li><p><strong>csv_name</strong> (<em>str</em>) – csv file name to store.</p></li>
+<li><p><strong>save_path</strong> (<em>str</em><em>, </em><em>optional</em>) – Folder path to store. Defaults to ‘./results’.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graph_datasets</span> <span class="kn">import</span> <span class="n">evaluate_from_embed_file</span>
+<span class="kn">from</span> <span class="nn">graph_datasets</span> <span class="kn">import</span> <span class="n">save_to_csv_files</span>
+
+<span class="n">method_name</span><span class="o">=</span><span class="s1">&#39;orderedgnn&#39;</span>
+<span class="n">data_name</span><span class="o">=</span><span class="s1">&#39;texas&#39;</span>
+
+<span class="n">clustering_res</span><span class="p">,</span> <span class="n">classification_res</span> <span class="o">=</span> <span class="n">evaluate_from_embed_file</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">data_name</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">method_name</span><span class="si">}</span><span class="s1">_embeds.pth&#39;</span><span class="p">,</span>
+    <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">data_name</span><span class="si">}</span><span class="s1">_data.pth&#39;</span><span class="p">,</span>
+    <span class="n">save_path</span><span class="o">=</span><span class="s1">&#39;./save/&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">add_info</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="n">data_name</span><span class="p">,</span> <span class="s1">&#39;method&#39;</span><span class="p">:</span> <span class="n">method_name</span><span class="p">,}</span>
+<span class="n">save_to_csv_files</span><span class="p">(</span><span class="n">clustering_res</span><span class="p">,</span> <span class="n">add_info</span><span class="p">,</span> <span class="s1">&#39;clutering.csv&#39;</span><span class="p">)</span>
+<span class="n">save_to_csv_files</span><span class="p">(</span><span class="n">classification_res</span><span class="p">,</span> <span class="n">add_info</span><span class="p">,</span> <span class="s1">&#39;classification.csv&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
