@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>graph_datasets.datasets.critical &mdash; Graph Datasets 0.5.1 documentation</title>
+  <title>graph_datasets.datasets.critical &mdash; Graph Datasets 0.6.0 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -136,6 +136,8 @@
 <span class="sd">    Returns:</span>
 <span class="sd">        Tuple[dgl.DGLGraph, torch.Tensor, int]: [graph, label, n_clusters]</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">dataset_name</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;squirrel&quot;</span><span class="p">,</span> <span class="s2">&quot;chameleon&quot;</span><span class="p">]:</span>
+        <span class="n">dataset_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">dataset_name</span><span class="si">}</span><span class="s2">_filtered_directed&quot;</span>
     <span class="n">dataset_name</span> <span class="o">=</span> <span class="n">dataset_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">)</span>
     <span class="n">data_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">dataset_name</span><span class="si">}</span><span class="s2">.npz&quot;</span><span class="p">)</span>
 
