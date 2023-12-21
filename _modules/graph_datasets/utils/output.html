@@ -71,6 +71,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../rst/graph_datasets.utils.html#module-graph_datasets.utils.statistics">statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../rst/graph_datasets.utils.html#module-graph_datasets.utils.model_management">model management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../rst/graph_datasets.utils.html#module-graph_datasets.utils.output">output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../rst/graph_datasets.utils.html#module-graph_datasets.utils.plt">plt</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../rst/graph_datasets.utils.html#module-graph_datasets.utils.common">common</a></li>
 </ul>
 
@@ -212,10 +213,11 @@
                 <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">tbody</span><span class="p">:</span>
                     <span class="n">dict_writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">stat</span><span class="p">(</span><span class="n">target_path</span><span class="p">)</span><span class="o">.</span><span class="n">st_size</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">thead</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">thead</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                     <span class="k">if</span> <span class="n">sort_head</span><span class="p">:</span>
                         <span class="n">thead</span><span class="p">,</span> <span class="n">tbody</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">thead</span><span class="p">,</span> <span class="n">tbody</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])))</span>
-                    <span class="n">csv_write</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">thead</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">stat</span><span class="p">(</span><span class="n">target_path</span><span class="p">)</span><span class="o">.</span><span class="n">st_size</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="n">csv_write</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">thead</span><span class="p">)</span>
                 <span class="n">csv_write</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">tbody</span><span class="p">)</span></div>
 
 

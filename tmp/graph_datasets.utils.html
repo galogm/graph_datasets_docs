@@ -72,6 +72,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../rst/graph_datasets.utils.html#module-graph_datasets.utils.statistics">statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/graph_datasets.utils.html#module-graph_datasets.utils.model_management">model management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/graph_datasets.utils.html#module-graph_datasets.utils.output">output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/graph_datasets.utils.html#module-graph_datasets.utils.plt">plt</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/graph_datasets.utils.html#module-graph_datasets.utils.common">common</a></li>
 </ul>
 
@@ -426,6 +427,55 @@
 <span class="n">save_to_csv_files</span><span class="p">(</span><span class="n">classification_res</span><span class="p">,</span> <span class="n">add_info</span><span class="p">,</span> <span class="s1">&#39;classification.csv&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</dd></dl>
+
+</section>
+<section id="module-graph_datasets.utils.plt">
+<span id="graph-datasets-utils-plt-module"></span><h2>graph_datasets.utils.plt module<a class="headerlink" href="#module-graph_datasets.utils.plt" title="Permalink to this heading"></a></h2>
+<p>Draw plots.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="graph_datasets.utils.plt.charts">
+<span class="sig-prename descclassname"><span class="pre">graph_datasets.utils.plt.</span></span><span class="sig-name descname"><span class="pre">charts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax:</span> <span class="pre">&lt;module</span> <span class="pre">'matplotlib.axes'</span> <span class="pre">from</span> <span class="pre">'/data1/guming/projects/graph_datasets/.env/lib/python3.8/site-packages/matplotlib/axes/__init__.py'&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/graph_datasets/utils/plt.html#charts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#graph_datasets.utils.plt.charts" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="graph_datasets.utils.plt.draw_chart">
+<span class="sig-prename descclassname"><span class="pre">graph_datasets.utils.plt.</span></span><span class="sig-name descname"><span class="pre">draw_chart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">ys:</span> <span class="pre">~typing.List[~typing.List],</span> <span class="pre">lbls:</span> <span class="pre">~typing.List[str],</span> <span class="pre">y_colors:</span> <span class="pre">~typing.List[str]</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">xs:</span> <span class="pre">~typing.List[~typing.Any]</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">fill_between:</span> <span class="pre">~typing.List</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">fill_colors:</span> <span class="pre">~typing.List[str]</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">fill_alpha:</span> <span class="pre">~typing.List[float]</span> <span class="pre">=</span> <span class="pre">0.5,</span> <span class="pre">figsize:</span> <span class="pre">~typing.Tuple</span> <span class="pre">=</span> <span class="pre">(24,</span> <span class="pre">3),</span> <span class="pre">xmode:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'s',</span> <span class="pre">ymode:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'s',</span> <span class="pre">title:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">xticks:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False,</span> <span class="pre">x_rotation:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">45,</span> <span class="pre">boxes:</span> <span class="pre">~typing.List[~typing.List[int]]</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">box_colors:</span> <span class="pre">~typing.List[str]</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">box_alphas:</span> <span class="pre">~typing.List[float]</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">ylim:</span> <span class="pre">(&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'float'&gt;)</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">xlim:</span> <span class="pre">(&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'float'&gt;)</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">linewidth:</span> <span class="pre">~typing.List[int]</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">types:</span> <span class="pre">~typing.List[str]</span> <span class="pre">=</span> <span class="pre">'line',</span> <span class="pre">markersize:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">1.25,</span> <span class="pre">save_path:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">bar_width:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">0.25,</span> <span class="pre">legend_loc:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'center</span> <span class="pre">left',</span> <span class="pre">legend_bbox_to_anchor:</span> <span class="pre">~typing.Tuple[float]</span> <span class="pre">=</span> <span class="pre">(1,</span> <span class="pre">0.5)</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/graph_datasets/utils/plt.html#draw_chart"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#graph_datasets.utils.plt.draw_chart" title="Permalink to this definition"></a></dt>
+<dd><p>Draw charts.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ys</strong> (<em>List</em><em>[</em><em>List</em><em>]</em>) – value lists of the y axis.</p></li>
+<li><p><strong>lbls</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – legend labels of the value lists.</p></li>
+<li><p><strong>y_colors</strong> (<em>List</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – colors of the the ys. Defaults to None.</p></li>
+<li><p><strong>xs</strong> (<em>List</em><em>[</em><em>Any</em><em>]</em><em>, </em><em>optional</em>) – value list of the x axis.             If None, idx will be used. Defaults to None.</p></li>
+<li><p><strong>fill_between</strong> (<em>List</em><em>, </em><em>optional</em>) – fill the range of             <cite>[ys[idx][i] - fill_between[idx][i], ys[idx][i] + fill_between[idx][i]]</cite>.                  Defaults to None.</p></li>
+<li><p><strong>fill_colors</strong> (<em>List</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – colors of the fill range. Defaults to None.</p></li>
+<li><p><strong>fill_alpha</strong> (<em>List</em><em>[</em><em>float</em><em>] or </em><em>float</em><em>, </em><em>optional</em>) – color alphas of the fill range.             Defaults to 0.5.</p></li>
+<li><p><strong>figsize</strong> (<em>Tuple</em><em>, </em><em>optional</em>) – size of the output figure. Defaults to (24, 3).</p></li>
+<li><p><strong>xmode</strong> (<em>str</em><em>, </em><em>optional</em>) – all ys with the same x (‘s’) or with different xs (‘d’).             Defaults to “s”.</p></li>
+<li><p><strong>ymode</strong> (<em>str</em><em>, </em><em>optional</em>) – all ys with the same tick (‘s’) or with different ticks (‘d’).             Defaults to “s”.</p></li>
+<li><p><strong>title</strong> (<em>str</em><em>, </em><em>optional</em>) – figure title. Defaults to None.</p></li>
+<li><p><strong>xticks</strong> (<em>bool</em><em>, </em><em>optional</em>) – set the x ticks. Defaults to True.</p></li>
+<li><p><strong>x_rotation</strong> (<em>float</em><em>, </em><em>optional</em>) – rotation of the x ticks. Defaults to 45.</p></li>
+<li><p><strong>boxes</strong> (<em>List</em><em>[</em><em>List</em><em>[</em><em>int</em><em>]</em><em>]</em><em>, </em><em>optional</em>) – draw boxes. Defaults to None.</p></li>
+<li><p><strong>box_colors</strong> (<em>List</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – colors of the boxes to draw. Defaults to None.</p></li>
+<li><p><strong>box_alpha</strong> (<em>List</em><em>[</em><em>float</em><em>]</em><em>, </em><em>optional</em>) – color alphas of the boxes to draw. Defaults to 0.5.</p></li>
+<li><p><strong>ylim</strong> (<em>float</em><em>, </em><em>optional</em>) – maximum value of the y axis. Defaults to None.</p></li>
+<li><p><strong>xlim</strong> (<em>float</em><em>, </em><em>optional</em>) – maximum value of the x axis. Defaults to None.</p></li>
+<li><p><strong>linewidth</strong> (<em>List</em><em>[</em><em>int</em><em>]</em><em>, </em><em>optional</em>) – line width of the line charts to draw. Defaults to None.</p></li>
+<li><p><strong>types</strong> (<em>List</em><em>[</em><em>str</em><em>] or </em><em>str</em><em>, </em><em>optional</em>) – types of charts of the ys. Defaults to “line”.</p></li>
+<li><p><strong>markersize</strong> (<em>float</em><em>, </em><em>optional</em>) – dot size of the scatter charts. Defaults to 1.25.</p></li>
+<li><p><strong>save_path</strong> (<em>str</em><em>, </em><em>optional</em>) – If not None, save image to the path. Defaults to None.</p></li>
+<li><p><strong>bar_width</strong> (<em>float</em><em>, </em><em>optional</em>) – width of the bars. Defaults to 0.25.</p></li>
+<li><p><strong>legend_loc</strong> (<em>str</em><em>, </em><em>optional</em>) – location of the legend. Defaults to “center left”.</p></li>
+<li><p><strong>legend_bbox_to_anchor</strong> (<em>Tuple</em><em>[</em><em>float</em><em>]</em><em>, </em><em>optional</em>) – bbox_to_anchor of the legend.             Defaults to (1, 0.5).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – “The arg ‘types:’{types} has values not supported.”</p>
+</dd>
+</dl>
 </dd></dl>
 
 </section>

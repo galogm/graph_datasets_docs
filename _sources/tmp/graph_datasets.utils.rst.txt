@@ -36,6 +36,14 @@ graph\_datasets.utils.output module
    :undoc-members:
    :show-inheritance:
 
+graph\_datasets.utils.plt module
+--------------------------------
+
+.. automodule:: graph_datasets.utils.plt
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 graph\_datasets.utils.statistics module
 ---------------------------------------
 
