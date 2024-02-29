@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>graph_datasets.load_data &mdash; Graph Datasets 0.12.0 documentation</title>
+  <title>graph_datasets.load_data &mdash; Graph Datasets 0.13.0 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -15,7 +15,7 @@
   
         <script src="../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=19e90285"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=683c48dc"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
         <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
         <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -102,6 +102,8 @@
 
 <span class="kn">import</span> <span class="nn">dgl</span>
 <span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">torch_geometric.data</span> <span class="kn">import</span> <span class="n">Data</span>
+<span class="kn">from</span> <span class="nn">torch_geometric.utils</span> <span class="kn">import</span> <span class="n">from_dgl</span>
 
 <span class="kn">from</span> <span class="nn">.data_info</span> <span class="kn">import</span> <span class="n">COLA_DATASETS</span>
 <span class="kn">from</span> <span class="nn">.data_info</span> <span class="kn">import</span> <span class="n">CRITICAL_DATASETS</span>
@@ -126,9 +128,10 @@
     <span class="n">directory</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">DEFAULT_DATA_DIR</span><span class="p">,</span>
     <span class="n">verbosity</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
     <span class="n">source</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;pyg&quot;</span><span class="p">,</span>
+    <span class="n">return_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;dgl&quot;</span><span class="p">,</span>
     <span class="n">rm_self_loop</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="n">to_simple</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">dgl</span><span class="o">.</span><span class="n">DGLGraph</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">dgl</span><span class="o">.</span><span class="n">DGLGraph</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="ow">or</span> <span class="n">Data</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Load graphs.</span>
 
 <span class="sd">    Args:</span>
@@ -138,6 +141,8 @@
 <span class="sd">        verbosity (int, optional): Output debug information. \</span>
 <span class="sd">            The greater, the more detailed. Defaults to 0.</span>
 <span class="sd">        source (str, optional): Source for data loading. Defaults to &quot;pyg&quot;.</span>
+<span class="sd">        return_type (str, optional): Return type of the graphs within [&quot;dgl&quot;, &quot;pyg&quot;]. \</span>
+<span class="sd">            Defaults to &quot;dgl&quot;.</span>
 <span class="sd">        rm_self_loop (str, optional): Remove self loops. Defaults to True.</span>
 <span class="sd">        to_simple (str, optional): Convert to a simple graph with no duplicate undirected edges.</span>
 
@@ -151,22 +156,40 @@
 <span class="sd">        .. code-block:: python</span>
 
 <span class="sd">            from graph_datasets import load_data</span>
+<span class="sd">            # dgl graph</span>
 <span class="sd">            graph, label, n_clusters = load_data(</span>
 <span class="sd">                dataset_name=&#39;cora&#39;,</span>
 <span class="sd">                directory=&quot;./data&quot;,</span>
+<span class="sd">                return_type=&quot;dgl&quot;,</span>
 <span class="sd">                source=&#39;pyg&#39;,</span>
 <span class="sd">                verbosity=3,</span>
+<span class="sd">                rm_self_loop=True,</span>
+<span class="sd">                to_simple=True,</span>
 <span class="sd">            )</span>
+<span class="sd">            # pyG data</span>
+<span class="sd">            data = load_data(</span>
+<span class="sd">                dataset_name=&#39;cora&#39;,</span>
+<span class="sd">                directory=&quot;./data&quot;,</span>
+<span class="sd">                return_type=&quot;pyg&quot;,</span>
+<span class="sd">                source=&#39;pyg&#39;,</span>
+<span class="sd">                verbosity=3,</span>
+<span class="sd">                rm_self_loop=True,</span>
+<span class="sd">                to_simple=True,</span>
+<span class="sd">            )</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">dataset_name</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="n">dataset_name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">if</span> <span class="n">dataset_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span>
+        <span class="n">dataset_name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">dataset_name</span>
+        <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span>
             <span class="s2">&quot;papers100M&quot;</span><span class="p">,</span>
             <span class="s2">&quot;Penn94&quot;</span><span class="p">,</span>
             <span class="s2">&quot;Amherst41&quot;</span><span class="p">,</span>
             <span class="s2">&quot;Cornell5&quot;</span><span class="p">,</span>
             <span class="s2">&quot;Johns Hopkins55&quot;</span><span class="p">,</span>
             <span class="s2">&quot;Reed98&quot;</span><span class="p">,</span>
-        <span class="p">]</span> <span class="k">else</span> <span class="n">dataset_name</span>
+        <span class="p">]</span>
+        <span class="k">else</span> <span class="n">dataset_name</span>
     <span class="p">)</span>
     <span class="n">ssl</span><span class="o">.</span><span class="n">_create_default_https_context</span> <span class="o">=</span> <span class="n">ssl</span><span class="o">.</span><span class="n">_create_unverified_context</span>
 
@@ -228,19 +251,31 @@
     <span class="c1"># make label from 0</span>
     <span class="n">uni</span> <span class="o">=</span> <span class="n">label</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
     <span class="n">old2new</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">uni</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">uni</span><span class="p">)))))</span>
-    <span class="n">newlabel</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">old2new</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">item</span><span class="p">()],</span> <span class="n">label</span><span class="p">)))</span>
-    <span class="n">graph</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">newlabel</span>
+    <span class="n">new_label</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">old2new</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">item</span><span class="p">()],</span> <span class="n">label</span><span class="p">)))</span>
+    <span class="n">graph</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_label</span>
 
     <span class="k">if</span> <span class="n">verbosity</span><span class="p">:</span>
         <span class="n">print_dataset_info</span><span class="p">(</span>
-            <span class="n">dataset_name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">source</span><span class="si">}</span><span class="s2"> undirected </span><span class="si">{</span><span class="n">dataset_name</span><span class="si">}</span><span class="se">\n</span><span class="s2">without self-loops&quot;</span><span class="p">,</span>
+            <span class="n">dataset_name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">source</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="si">}</span><span class="s2"> undirected </span><span class="si">{</span><span class="n">dataset_name</span><span class="si">}</span><span class="se">\n</span><span class="s2">without self-loops&quot;</span><span class="p">,</span>
             <span class="n">n_nodes</span><span class="o">=</span><span class="n">graph</span><span class="o">.</span><span class="n">num_nodes</span><span class="p">(),</span>
             <span class="n">n_edges</span><span class="o">=</span><span class="n">graph</span><span class="o">.</span><span class="n">num_edges</span><span class="p">(),</span>
             <span class="n">n_feats</span><span class="o">=</span><span class="n">graph</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s2">&quot;feat&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
             <span class="n">n_clusters</span><span class="o">=</span><span class="n">n_clusters</span><span class="p">,</span>
         <span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">graph</span><span class="p">,</span> <span class="n">newlabel</span><span class="p">,</span> <span class="n">n_clusters</span></div>
+    <span class="k">if</span> <span class="n">return_type</span> <span class="o">==</span> <span class="s2">&quot;dgl&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">graph</span><span class="p">,</span> <span class="n">new_label</span><span class="p">,</span> <span class="n">n_clusters</span>
+
+    <span class="n">data</span> <span class="o">=</span> <span class="n">from_dgl</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">dataset_name</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">num_classes</span> <span class="o">=</span> <span class="n">n_clusters</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">feat</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">label</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">num_nodes</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">num_nodes</span><span class="p">()</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">num_edges</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">num_edges</span><span class="p">()</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">edge_index</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">graph</span><span class="o">.</span><span class="n">edges</span><span class="p">(),</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">data</span></div>
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
