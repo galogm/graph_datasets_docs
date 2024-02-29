@@ -1,24 +1,22 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>graph_datasets.utils package &mdash; Graph Datasets 0.9.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=eafc0fe6" />
-      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/table.css?v=e471720b" />
-
-  
+  <title>graph_datasets.utils package &mdash; Graph Datasets 0.12.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/table.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=1bc1ca25"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=19e90285"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
         <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
         <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -68,11 +66,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Utils</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../rst/graph_datasets.utils.html">evaluation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/graph_datasets.utils.html#module-graph_datasets.utils.statistics">statistics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/graph_datasets.utils.html#module-graph_datasets.utils.model_management">model management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/graph_datasets.utils.html#module-graph_datasets.utils.output">output</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/graph_datasets.utils.html#module-graph_datasets.utils.plt">plt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/graph_datasets.utils.html">statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/graph_datasets.utils.html#module-graph_datasets.utils.common">common</a></li>
 </ul>
 
@@ -102,47 +96,12 @@
              
   <section id="graph-datasets-utils-package">
 <h1>graph_datasets.utils package<a class="headerlink" href="#graph-datasets-utils-package" title="Permalink to this heading"></a></h1>
-<section id="subpackages">
-<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading"></a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="graph_datasets.utils.evaluation.html">graph_datasets.utils.evaluation package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="graph_datasets.utils.evaluation.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="graph_datasets.utils.evaluation.html#module-graph_datasets.utils.evaluation.eval_tools">graph_datasets.utils.evaluation.eval_tools module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="graph_datasets.utils.evaluation.html#graph_datasets.utils.evaluation.eval_tools.load_dict"><code class="docutils literal notranslate"><span class="pre">load_dict()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="graph_datasets.utils.evaluation.html#graph_datasets.utils.evaluation.eval_tools.save_dict"><code class="docutils literal notranslate"><span class="pre">save_dict()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="graph_datasets.utils.evaluation.html#graph_datasets.utils.evaluation.eval_tools.split_train_test_nodes"><code class="docutils literal notranslate"><span class="pre">split_train_test_nodes()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="graph_datasets.utils.evaluation.html#graph_datasets.utils.evaluation.eval_tools.cluster_eval"><code class="docutils literal notranslate"><span class="pre">cluster_eval()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="graph_datasets.utils.evaluation.html#graph_datasets.utils.evaluation.eval_tools.unsup_eval"><code class="docutils literal notranslate"><span class="pre">unsup_eval()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="graph_datasets.utils.evaluation.html#graph_datasets.utils.evaluation.eval_tools.kmeans_test"><code class="docutils literal notranslate"><span class="pre">kmeans_test()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="graph_datasets.utils.evaluation.html#graph_datasets.utils.evaluation.eval_tools.svm_test"><code class="docutils literal notranslate"><span class="pre">svm_test()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="graph_datasets.utils.evaluation.html#graph_datasets.utils.evaluation.eval_tools.evaluate_results_nc"><code class="docutils literal notranslate"><span class="pre">evaluate_results_nc()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="graph_datasets.utils.evaluation.html#graph_datasets.utils.evaluation.eval_tools.save_embedding"><code class="docutils literal notranslate"><span class="pre">save_embedding()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="graph_datasets.utils.evaluation.html#module-graph_datasets.utils.evaluation.evaluation">graph_datasets.utils.evaluation.evaluation module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="graph_datasets.utils.evaluation.html#graph_datasets.utils.evaluation.evaluation.load_from_file"><code class="docutils literal notranslate"><span class="pre">load_from_file()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="graph_datasets.utils.evaluation.html#graph_datasets.utils.evaluation.evaluation.evaluate_from_embed_file"><code class="docutils literal notranslate"><span class="pre">evaluate_from_embed_file()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="graph_datasets.utils.evaluation.html#module-graph_datasets.utils.evaluation">Module contents</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</section>
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
 </section>
 <section id="module-graph_datasets.utils.common">
 <span id="graph-datasets-utils-common-module"></span><h2>graph_datasets.utils.common module<a class="headerlink" href="#module-graph_datasets.utils.common" title="Permalink to this heading"></a></h2>
 <p>Common utils.</p>
-<dl class="py function">
-<dt class="sig sig-object py" id="graph_datasets.utils.common.get_str_time">
-<span class="sig-prename descclassname"><span class="pre">graph_datasets.utils.common.</span></span><span class="sig-name descname"><span class="pre">get_str_time</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/graph_datasets/utils/common.html#get_str_time"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#graph_datasets.utils.common.get_str_time" title="Permalink to this definition"></a></dt>
-<dd><p>Return localtime in the format of “%m%d%H%M%S”.</p>
-</dd></dl>
-
 <dl class="py function">
 <dt class="sig sig-object py" id="graph_datasets.utils.common.format_value">
 <span class="sig-prename descclassname"><span class="pre">graph_datasets.utils.common.</span></span><span class="sig-name descname"><span class="pre">format_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="../_modules/graph_datasets/utils/common.html#format_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#graph_datasets.utils.common.format_value" title="Permalink to this definition"></a></dt>
@@ -221,259 +180,6 @@
 <li><p><strong>quiet</strong> (<em>bool</em>) – Suppress terminal output. Default is False.</p></li>
 <li><p><strong>file_name</strong> (<em>str</em>) – File name. Default to None.</p></li>
 </ul>
-</dd>
-</dl>
-</dd></dl>
-
-</section>
-<section id="module-graph_datasets.utils.model_management">
-<span id="graph-datasets-utils-model-management-module"></span><h2>graph_datasets.utils.model_management module<a class="headerlink" href="#module-graph_datasets.utils.model_management" title="Permalink to this heading"></a></h2>
-<p>Model Management.</p>
-<dl class="py function">
-<dt class="sig sig-object py" id="graph_datasets.utils.model_management.get_modelfile_path">
-<span class="sig-prename descclassname"><span class="pre">graph_datasets.utils.model_management.</span></span><span class="sig-name descname"><span class="pre">get_modelfile_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">PurePath</span></span></span><a class="reference internal" href="../_modules/graph_datasets/utils/model_management.html#get_modelfile_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#graph_datasets.utils.model_management.get_modelfile_path" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="graph_datasets.utils.model_management.check_modelfile_exists">
-<span class="sig-prename descclassname"><span class="pre">graph_datasets.utils.model_management.</span></span><span class="sig-name descname"><span class="pre">check_modelfile_exists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/graph_datasets/utils/model_management.html#check_modelfile_exists"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#graph_datasets.utils.model_management.check_modelfile_exists" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="graph_datasets.utils.model_management.save_model">
-<span class="sig-prename descclassname"><span class="pre">graph_datasets.utils.model_management.</span></span><span class="sig-name descname"><span class="pre">save_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Module</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optimizer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_epoch</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/graph_datasets/utils/model_management.html#save_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#graph_datasets.utils.model_management.save_model" title="Permalink to this definition"></a></dt>
-<dd><p>Save model, optimizer, current_epoch, loss to <code class="docutils literal notranslate"><span class="pre">.checkpoints/${model_filename}.pt</span></code>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>model_filename</strong> (<em>str</em>) – filename to save model.</p></li>
-<li><p><strong>model</strong> (<em>torch.nn.Module</em>) – model.</p></li>
-<li><p><strong>optimizer</strong> (<em>torch.optim.Optimizer</em>) – optimizer.</p></li>
-<li><p><strong>current_epoch</strong> (<em>int</em>) – current epoch.</p></li>
-<li><p><strong>loss</strong> (<em>float</em>) – loss.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="graph_datasets.utils.model_management.load_model">
-<span class="sig-prename descclassname"><span class="pre">graph_datasets.utils.model_management.</span></span><span class="sig-name descname"><span class="pre">load_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Module</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optimizer</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">device</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">device(type='cpu')</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Module</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Optimizer</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/graph_datasets/utils/model_management.html#load_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#graph_datasets.utils.model_management.load_model" title="Permalink to this definition"></a></dt>
-<dd><p>Load model from <code class="docutils literal notranslate"><span class="pre">.checkpoints/${model_filename}.pt</span></code>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>model_filename</strong> (<em>str</em>) – filename to load model.</p></li>
-<li><p><strong>model</strong> (<em>torch.nn.Module</em>) – model.</p></li>
-<li><p><strong>optimizer</strong> (<em>torch.optim.Optimizer</em>) – optimizer.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>[model, optimizer, epoch, loss]</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Tuple[torch.nn.Module, torch.optim.Optimizer, int, float]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="graph_datasets.utils.model_management.set_seed">
-<span class="sig-prename descclassname"><span class="pre">graph_datasets.utils.model_management.</span></span><span class="sig-name descname"><span class="pre">set_seed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">4096</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/graph_datasets/utils/model_management.html#set_seed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#graph_datasets.utils.model_management.set_seed" title="Permalink to this definition"></a></dt>
-<dd><p>Set random seed.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>!!! <cite>conv</cite> and <cite>neighborSampler</cite> of dgl are somehow nondeterministic !!!</p>
-<dl class="simple">
-<dt>Set seeds according to:</dt><dd><ul class="simple">
-<li><p><a class="reference external" href="https://pytorch.org/docs/1.9.0/notes/randomness.html">pytorch doc</a></p></li>
-<li><p><a class="reference external" href="https://docs.nvidia.com/cuda/cublas/index.html#cublasApi_reproducibility">cudatoolkit doc</a></p></li>
-<li><p><a class="reference external" href="https://github.com/dmlc/dgl/issues/3302">dgl issue</a></p></li>
-</ul>
-</dd>
-</dl>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>seed</strong> (<em>int</em><em>, </em><em>optional</em>) – random seed. Defaults to 4096.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="graph_datasets.utils.model_management.set_device">
-<span class="sig-prename descclassname"><span class="pre">graph_datasets.utils.model_management.</span></span><span class="sig-name descname"><span class="pre">set_device</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gpu</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'0'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">device</span></span></span><a class="reference internal" href="../_modules/graph_datasets/utils/model_management.html#set_device"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#graph_datasets.utils.model_management.set_device" title="Permalink to this definition"></a></dt>
-<dd><p>Set torch device.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>gpu</strong> (<em>str</em>) – args.gpu. Defaults to ‘0’.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>torch device. <cite>device(type=’cuda: x’)</cite> or <cite>device(type=’cpu’)</cite>.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>torch.device</p>
-</dd>
-</dl>
-</dd></dl>
-
-</section>
-<section id="module-graph_datasets.utils.output">
-<span id="graph-datasets-utils-output-module"></span><h2>graph_datasets.utils.output module<a class="headerlink" href="#module-graph_datasets.utils.output" title="Permalink to this heading"></a></h2>
-<p>Output Management.</p>
-<dl class="py function">
-<dt class="sig sig-object py" id="graph_datasets.utils.output.make_parent_dirs">
-<span class="sig-prename descclassname"><span class="pre">graph_datasets.utils.output.</span></span><span class="sig-name descname"><span class="pre">make_parent_dirs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PurePath</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/graph_datasets/utils/output.html#make_parent_dirs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#graph_datasets.utils.output.make_parent_dirs" title="Permalink to this definition"></a></dt>
-<dd><p>make all the parent dirs of the target path.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>target_path</strong> (<em>PurePath</em>) – target path.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="graph_datasets.utils.output.refresh_file">
-<span class="sig-prename descclassname"><span class="pre">graph_datasets.utils.output.</span></span><span class="sig-name descname"><span class="pre">refresh_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/graph_datasets/utils/output.html#refresh_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#graph_datasets.utils.output.refresh_file" title="Permalink to this definition"></a></dt>
-<dd><p>clear target path</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>target_path</strong> (<em>str</em>) – file path</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="graph_datasets.utils.output.csv2file">
-<span class="sig-prename descclassname"><span class="pre">graph_datasets.utils.output.</span></span><span class="sig-name descname"><span class="pre">csv2file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thead</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tbody</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refresh</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_dict_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort_head</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/graph_datasets/utils/output.html#csv2file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#graph_datasets.utils.output.csv2file" title="Permalink to this definition"></a></dt>
-<dd><p>save data to target_path of a csv file.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>target_path</strong> (<em>str</em>) – target path</p></li>
-<li><p><strong>thead</strong> (<em>List</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – csv table header, only written into the file when            it is not None and file is empty. Defaults to None.</p></li>
-<li><p><strong>tbody</strong> (<em>List</em><em>, </em><em>optional</em>) – csv table content. Defaults to None.</p></li>
-<li><p><strong>refresh</strong> (<em>bool</em><em>, </em><em>optional</em>) – whether to clean the file first. Defaults to False.</p></li>
-<li><p><strong>is_dict_list</strong> (<em>bool</em><em>, </em><em>optional</em>) – whether the tbody is in the format of a list of dicts.             Defaults to False.</p></li>
-<li><p><strong>sort_head</strong> (<em>bool</em><em>, </em><em>optional</em>) – whether to sort the head before writing. Defaults to True.</p></li>
-</ul>
-</dd>
-</dl>
-<p class="rubric">Example</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graph_datasets</span> <span class="kn">import</span> <span class="n">csv2file</span>
-<span class="n">save_file</span> <span class="o">=</span> <span class="s2">&quot;./results/example.csv&quot;</span>
-<span class="n">final_params</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;cora&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;acc&quot;</span><span class="p">:</span> <span class="s2">&quot;99.1&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;NMI&quot;</span><span class="p">:</span> <span class="s2">&quot;89.0&quot;</span><span class="p">,</span>
-<span class="p">}</span>
-<span class="n">thead</span><span class="o">=</span><span class="p">[]</span>
-<span class="c1"># list of values</span>
-<span class="n">csv2file</span><span class="p">(</span>
-    <span class="n">target_path</span><span class="o">=</span><span class="n">save_file</span><span class="p">,</span>
-    <span class="n">thead</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">final_params</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span>
-    <span class="n">tbody</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">final_params</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span>
-    <span class="n">refresh</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="n">is_dict_list</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="c1"># list of dicts</span>
-<span class="n">csv2file</span><span class="p">(</span>
-    <span class="n">target_path</span><span class="o">=</span><span class="n">save_file</span><span class="p">,</span>
-    <span class="n">tbody</span><span class="o">=</span><span class="p">[</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-            <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="mi">2</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-            <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="mi">1</span>
-        <span class="p">},</span>
-    <span class="p">],</span>
-    <span class="n">is_dict_list</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="graph_datasets.utils.output.save_to_csv_files">
-<span class="sig-prename descclassname"><span class="pre">graph_datasets.utils.output.</span></span><span class="sig-name descname"><span class="pre">save_to_csv_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">csv_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./results'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/graph_datasets/utils/output.html#save_to_csv_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#graph_datasets.utils.output.save_to_csv_files" title="Permalink to this definition"></a></dt>
-<dd><p>Save the evaluation results to a local csv file.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>results</strong> (<em>dict</em>) – Evaluation results document.</p></li>
-<li><p><strong>add_info</strong> (<em>dict</em>) – Additional information, such as data set name, method name.</p></li>
-<li><p><strong>csv_name</strong> (<em>str</em>) – csv file name to store.</p></li>
-<li><p><strong>save_path</strong> (<em>str</em><em>, </em><em>optional</em>) – Folder path to store. Defaults to ‘./results’.</p></li>
-</ul>
-</dd>
-</dl>
-<p class="rubric">Example</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graph_datasets</span> <span class="kn">import</span> <span class="n">evaluate_from_embed_file</span>
-<span class="kn">from</span> <span class="nn">graph_datasets</span> <span class="kn">import</span> <span class="n">save_to_csv_files</span>
-
-<span class="n">method_name</span><span class="o">=</span><span class="s1">&#39;orderedgnn&#39;</span>
-<span class="n">data_name</span><span class="o">=</span><span class="s1">&#39;texas&#39;</span>
-
-<span class="n">clustering_res</span><span class="p">,</span> <span class="n">classification_res</span> <span class="o">=</span> <span class="n">evaluate_from_embed_file</span><span class="p">(</span>
-    <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">data_name</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">method_name</span><span class="si">}</span><span class="s1">_embeds.pth&#39;</span><span class="p">,</span>
-    <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">data_name</span><span class="si">}</span><span class="s1">_data.pth&#39;</span><span class="p">,</span>
-    <span class="n">save_path</span><span class="o">=</span><span class="s1">&#39;./save/&#39;</span><span class="p">,</span>
-<span class="p">)</span>
-
-<span class="n">add_info</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="n">data_name</span><span class="p">,</span> <span class="s1">&#39;method&#39;</span><span class="p">:</span> <span class="n">method_name</span><span class="p">,}</span>
-<span class="n">save_to_csv_files</span><span class="p">(</span><span class="n">clustering_res</span><span class="p">,</span> <span class="n">add_info</span><span class="p">,</span> <span class="s1">&#39;clutering.csv&#39;</span><span class="p">)</span>
-<span class="n">save_to_csv_files</span><span class="p">(</span><span class="n">classification_res</span><span class="p">,</span> <span class="n">add_info</span><span class="p">,</span> <span class="s1">&#39;classification.csv&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</dd></dl>
-
-</section>
-<section id="module-graph_datasets.utils.plt">
-<span id="graph-datasets-utils-plt-module"></span><h2>graph_datasets.utils.plt module<a class="headerlink" href="#module-graph_datasets.utils.plt" title="Permalink to this heading"></a></h2>
-<p>Draw plots.</p>
-<dl class="py function">
-<dt class="sig sig-object py" id="graph_datasets.utils.plt.charts">
-<span class="sig-prename descclassname"><span class="pre">graph_datasets.utils.plt.</span></span><span class="sig-name descname"><span class="pre">charts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax:</span> <span class="pre">&lt;module</span> <span class="pre">'matplotlib.axes'</span> <span class="pre">from</span> <span class="pre">'/data1/guming/projects/graph_datasets/.env/lib/python3.8/site-packages/matplotlib/axes/__init__.py'&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/graph_datasets/utils/plt.html#charts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#graph_datasets.utils.plt.charts" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="graph_datasets.utils.plt.draw_chart">
-<span class="sig-prename descclassname"><span class="pre">graph_datasets.utils.plt.</span></span><span class="sig-name descname"><span class="pre">draw_chart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">ys:</span> <span class="pre">~typing.List[~typing.List],</span> <span class="pre">lbls:</span> <span class="pre">~typing.List[str],</span> <span class="pre">y_colors:</span> <span class="pre">~typing.List[str]</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">xs:</span> <span class="pre">~typing.List[~typing.Any]</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">fill_between:</span> <span class="pre">~typing.List</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">fill_colors:</span> <span class="pre">~typing.List[str]</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">fill_alpha:</span> <span class="pre">~typing.List[float]</span> <span class="pre">=</span> <span class="pre">0.5,</span> <span class="pre">figsize:</span> <span class="pre">~typing.Tuple</span> <span class="pre">=</span> <span class="pre">(24,</span> <span class="pre">3),</span> <span class="pre">xmode:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'s',</span> <span class="pre">ymode:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'s',</span> <span class="pre">title:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">xticks:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False,</span> <span class="pre">x_rotation:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">45,</span> <span class="pre">boxes:</span> <span class="pre">~typing.List[~typing.List[int]]</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">box_colors:</span> <span class="pre">~typing.List[str]</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">box_alphas:</span> <span class="pre">~typing.List[float]</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">ylim:</span> <span class="pre">(&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'float'&gt;)</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">xlim:</span> <span class="pre">(&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'float'&gt;)</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">linewidth:</span> <span class="pre">~typing.List[int]</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">types:</span> <span class="pre">~typing.List[str]</span> <span class="pre">=</span> <span class="pre">'line',</span> <span class="pre">markersize:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">1.25,</span> <span class="pre">save_path:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">bar_width:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">0.25,</span> <span class="pre">legend_loc:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'center</span> <span class="pre">left',</span> <span class="pre">legend_bbox_to_anchor:</span> <span class="pre">~typing.Tuple[float]</span> <span class="pre">=</span> <span class="pre">(1,</span> <span class="pre">0.5)</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/graph_datasets/utils/plt.html#draw_chart"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#graph_datasets.utils.plt.draw_chart" title="Permalink to this definition"></a></dt>
-<dd><p>Draw charts.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>ys</strong> (<em>List</em><em>[</em><em>List</em><em>]</em>) – value lists of the y axis.</p></li>
-<li><p><strong>lbls</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – legend labels of the value lists.</p></li>
-<li><p><strong>y_colors</strong> (<em>List</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – colors of the the ys. Defaults to None.</p></li>
-<li><p><strong>xs</strong> (<em>List</em><em>[</em><em>Any</em><em>]</em><em>, </em><em>optional</em>) – value list of the x axis.             If None, idx will be used. Defaults to None.</p></li>
-<li><p><strong>fill_between</strong> (<em>List</em><em>, </em><em>optional</em>) – fill the range of             <cite>[ys[idx][i] - fill_between[idx][i], ys[idx][i] + fill_between[idx][i]]</cite>.                  Defaults to None.</p></li>
-<li><p><strong>fill_colors</strong> (<em>List</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – colors of the fill range. Defaults to None.</p></li>
-<li><p><strong>fill_alpha</strong> (<em>List</em><em>[</em><em>float</em><em>] or </em><em>float</em><em>, </em><em>optional</em>) – color alphas of the fill range.             Defaults to 0.5.</p></li>
-<li><p><strong>figsize</strong> (<em>Tuple</em><em>, </em><em>optional</em>) – size of the output figure. Defaults to (24, 3).</p></li>
-<li><p><strong>xmode</strong> (<em>str</em><em>, </em><em>optional</em>) – all ys with the same x (‘s’) or with different xs (‘d’).             Defaults to “s”.</p></li>
-<li><p><strong>ymode</strong> (<em>str</em><em>, </em><em>optional</em>) – all ys with the same tick (‘s’) or with different ticks (‘d’).             Defaults to “s”.</p></li>
-<li><p><strong>title</strong> (<em>str</em><em>, </em><em>optional</em>) – figure title. Defaults to None.</p></li>
-<li><p><strong>xticks</strong> (<em>bool</em><em>, </em><em>optional</em>) – set the x ticks. Defaults to True.</p></li>
-<li><p><strong>x_rotation</strong> (<em>float</em><em>, </em><em>optional</em>) – rotation of the x ticks. Defaults to 45.</p></li>
-<li><p><strong>boxes</strong> (<em>List</em><em>[</em><em>List</em><em>[</em><em>int</em><em>]</em><em>]</em><em>, </em><em>optional</em>) – draw boxes. Defaults to None.</p></li>
-<li><p><strong>box_colors</strong> (<em>List</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – colors of the boxes to draw. Defaults to None.</p></li>
-<li><p><strong>box_alpha</strong> (<em>List</em><em>[</em><em>float</em><em>]</em><em>, </em><em>optional</em>) – color alphas of the boxes to draw. Defaults to 0.5.</p></li>
-<li><p><strong>ylim</strong> (<em>float</em><em>, </em><em>optional</em>) – maximum value of the y axis. Defaults to None.</p></li>
-<li><p><strong>xlim</strong> (<em>float</em><em>, </em><em>optional</em>) – maximum value of the x axis. Defaults to None.</p></li>
-<li><p><strong>linewidth</strong> (<em>List</em><em>[</em><em>int</em><em>]</em><em>, </em><em>optional</em>) – line width of the line charts to draw. Defaults to None.</p></li>
-<li><p><strong>types</strong> (<em>List</em><em>[</em><em>str</em><em>] or </em><em>str</em><em>, </em><em>optional</em>) – types of charts of the ys. Defaults to “line”.</p></li>
-<li><p><strong>markersize</strong> (<em>float</em><em>, </em><em>optional</em>) – dot size of the scatter charts. Defaults to 1.25.</p></li>
-<li><p><strong>save_path</strong> (<em>str</em><em>, </em><em>optional</em>) – If not None, save image to the path. Defaults to None.</p></li>
-<li><p><strong>bar_width</strong> (<em>float</em><em>, </em><em>optional</em>) – width of the bars. Defaults to 0.25.</p></li>
-<li><p><strong>legend_loc</strong> (<em>str</em><em>, </em><em>optional</em>) – location of the legend. Defaults to “center left”.</p></li>
-<li><p><strong>legend_bbox_to_anchor</strong> (<em>Tuple</em><em>[</em><em>float</em><em>]</em><em>, </em><em>optional</em>) – bbox_to_anchor of the legend.             Defaults to (1, 0.5).</p></li>
-</ul>
-</dd>
-<dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>ValueError</strong> – “The arg ‘types:’{types} has values not supported.”</p>
 </dd>
 </dl>
 </dd></dl>
